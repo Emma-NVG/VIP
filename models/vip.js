@@ -11,3 +11,14 @@ module.exports.test = function(callback) {
         }
     });
 };
+
+module.exports.repertoireLettre = function(callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql = "SELECT DISTINCT SUBSTR(VIP_NOM,1,1) AS NOM FROM vip ;";
+            // console.log(sql);
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
