@@ -26,11 +26,28 @@ module.exports.Repertoire = 	function(request, response) {
             response.render('repertoireVips', response);
         }
     );
-
 }
 
-module.exports.ListPerson = 	function(request, response) {
-    response.title = 'Liste des stars';
-    let data = request.params.firstLetter;
+module.exports.Person = 	function(request, response){
+    response.title = 'Vip Details';
+    let dataPerson = request.params.vipDetails;
+    async.parallel([
+        function (callback) {
+            model.repertoireLettre(function (err, result) {callback(null,result)});
+        },
+        function (callback) {
+            model.person(dataPerson,function(err2, result2) {callback(null,result2)});
+        }
+        ],
+        function (err,result) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            response.lettre = result[0];
+            response.vipPerson = result[1];
+            response.render('repertoireVips', response);
+        }
 
+    );
 }

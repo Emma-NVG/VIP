@@ -1,4 +1,3 @@
-<h1> Mettre ici la première lettre du nom des VIPs </h1>
 <p>Cliquez sur une lettre :
     {{#each lettre}}
         <a href="/listPerson/{{this.FIRST_LETTER_NAME}}"><span>{{this.FIRST_LETTER_NAME}}</span></a>
@@ -9,9 +8,31 @@
     {{#each listOfPerson}}
         <div class="photo_details_name">
             <img src="/images/vip/{{this.PHOTO}}">
-            <a href="#"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
+            <a href="/person/{{this.NAME}}"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
         </div>
-    {{else}}
-        <p>no content</p>
     {{/each}}
 </div>
+
+<div>
+    {{#each vipPerson}}
+        <img src="">
+        <p>Nom : {{this.FIRSTNAME}} {{this.NAME}}</p>
+        <p>Date de naissance : {{this.DATE}}</p>
+        <p>Nationalité : </p>
+
+        <!--Acteur ou realisateur-->
+        <p>Profession : </p>
+        <p>Principal(aux) film(s) : </p>
+
+        <!--Couturier ou Mannequin-->
+        <p>Profession : </p>
+        <p>Principal(aux) défilé(s) : </p>
+
+        <!--Chanteur-->
+        <p>Profession : </p>
+        <p>Principal(aux) album(s) : </p>
+    {{/each}}
+</div>
+
+
+
