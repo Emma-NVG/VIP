@@ -1,6 +1,17 @@
 <h1> Mettre ici la première lettre du nom des VIPs </h1>
 <p>Cliquez sur une lettre :
     {{#each lettre}}
-        <a href="listPers"><span>{{this.NOM}}</span></a>
+        <a href="/listPerson/{{this.FIRST_LETTER_NAME}}"><span>{{this.FIRST_LETTER_NAME}}</span></a>
     {{/each}}
 </p>
+
+<div>
+    {{#each listOfPerson}}
+        <div class="photo_details_name">
+            <img src="/images/vip/{{this.PHOTO}}">
+            <a href="#"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
+        </div>
+    {{else}}
+        <p>no content</p>
+    {{/each}}
+</div>

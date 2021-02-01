@@ -81,3 +81,8 @@ a  {
 .traitVertical {
   border-left: 1px white solid;
 }
+
+.photo_details_name{
+    display: inline-grid;
+    margin: 2%;
+}

@@ -14,3 +14,16 @@ module.exports.Repertoire = 	function(request, response) {
         response.render('repertoireVips', response);
     });
 }
+
+module.exports.ListPerson = 	function(request, response) {
+    response.title = 'Liste des stars';
+    let data = request.params.firstLetter;
+    model.listPerson(data,function (err, result) {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        response.listOfPerson = result;
+        response.render('repertoireVips', response);
+    });
+}
