@@ -37,6 +37,9 @@ module.exports.Person = 	function(request, response){
         },
         function (callback) {
             model.person(dataPerson,function(err2, result2) {callback(null,result2)});
+        },
+        function (callback) {
+            model.gallery(dataPerson,function(err3, result3) {callback(null,result3)});
         }
         ],
         function (err,result) {
@@ -46,8 +49,8 @@ module.exports.Person = 	function(request, response){
             }
             response.lettre = result[0];
             response.vipPerson = result[1];
+            response.galerie = result[2];
             response.render('repertoireVips', response);
         }
-
     );
 }

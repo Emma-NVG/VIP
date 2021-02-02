@@ -82,7 +82,24 @@ a  {
   border-left: 1px white solid;
 }
 
-.photo_details_name{
+.list_photo_name{
     display: inline-grid;
     margin: 2%;
+}
+
+.vip_details {
+    padding: 0% 5%;
+}
+
+.vip_details img{
+    float: left;
+    margin-right: 2%;
+}
+
+.vip_details p{
+    text-align: left;
+}
+
+.gallery_img{
+    width:13%;
 }

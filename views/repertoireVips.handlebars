@@ -6,19 +6,19 @@
 
 <div>
     {{#each listOfPerson}}
-        <div class="photo_details_name">
+        <div class="list_photo_name">
             <img src="/images/vip/{{this.PHOTO}}">
             <a href="/person/{{this.NAME}}"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
         </div>
     {{/each}}
 </div>
 
-<div>
+<div class="vip_details">
     {{#each vipPerson}}
-        <img src="">
+        <img src="/images/vip/{{this.PHOTO}}">
         <p>Nom : {{this.FIRSTNAME}} {{this.NAME}}</p>
-        <p>Date de naissance : {{this.DATE}}</p>
-        <p>Nationalité : </p>
+        <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY' }} </p>
+        <p>Nationalité : {{this.NAT}}</p>
 
         <!--Acteur ou realisateur-->
         <p>Profession : </p>
@@ -31,6 +31,13 @@
         <!--Chanteur-->
         <p>Profession : </p>
         <p>Principal(aux) album(s) : </p>
+
+        <p>Mariage(s) : </p>
+        <p>Liaison(s) : </p>
+        <p>Qui suis-je ? : {{this.TXT}}</p>
+    {{/each}}
+    {{#each galerie}}
+        <img src="/images/vip/{{this.PIC}}" class="gallery_img">
     {{/each}}
 </div>
 
