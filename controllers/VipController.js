@@ -1,7 +1,7 @@
 let async = require('async');
 let model = require("../models/vip.js");
 
-// ///////////////////////// R E P E R T O I R E    D E S     S T A R S
+/////////////////////////// R E P E R T O I R E    D E S     S T A R S
 
 module.exports.Repertoire = 	function(request, response) {
     response.title = 'Répertoire des stars';
@@ -33,13 +33,13 @@ module.exports.Person = 	function(request, response){
     let dataPerson = request.params.vipDetails;
     async.parallel([
         function (callback) {
-            model.repertoireLettre(function (err, result) {callback(null,result)});
+            model.repertoireLettre(function (err, result) {callback(null,result)}); //get letters for the navigation
         },
         function (callback) {
-            model.person(dataPerson,function(err2, result2) {callback(null,result2)});
+            model.person(dataPerson,function(err2, result2) {callback(null,result2)}); //get a vip information
         },
         function (callback) {
-            model.gallery(dataPerson,function(err3, result3) {callback(null,result3)});
+            model.gallery(dataPerson,function(err3, result3) {callback(null,result3)});//get all pictures addresses of a vip
         }
         ],
         function (err,result) {
