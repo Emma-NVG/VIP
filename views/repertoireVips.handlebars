@@ -1,8 +1,4 @@
-<p>Cliquez sur une lettre :
-    {{#each lettre}}
-        <a href="/listPerson/{{this.FIRST_LETTER_NAME}}"><span>{{this.FIRST_LETTER_NAME}}</span></a>
-    {{/each}}
-</p>
+{{>partialNavigation}}
 
 <div>
     {{#each listOfPerson}}

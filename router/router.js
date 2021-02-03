@@ -8,7 +8,7 @@ let TestController = require('./../controllers/TestController');
 // Routes
 module.exports = function(app){
 
-  // TODO tests à supprimer
+// TODO tests à supprimer
     app.get('/test', TestController.Test);
 
 // Main Routes
