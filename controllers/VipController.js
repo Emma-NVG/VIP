@@ -12,7 +12,7 @@ module.exports.Repertoire = 	function(request, response) {
         },
 
         function (callback) {
-            model.listPerson(data, function (err2, result2) {callback(null,result2)});
+            model.getAllVipWithFirstLetter(data, function (err2, result2) {callback(null,result2)});
         }
         ],
 
@@ -36,10 +36,16 @@ module.exports.Person = 	function(request, response){
             model.repertoireLettre(function (err, result) {callback(null,result)}); //get letters for the navigation
         },
         function (callback) {
-            model.person(dataPerson,function(err2, result2) {callback(null,result2)}); //get a vip information
+            model.getVip(dataPerson,function(err2, result2) {callback(null,result2)}); //get a vip information
         },
         function (callback) {
-            model.gallery(dataPerson,function(err3, result3) {callback(null,result3)});//get all pictures addresses of a vip
+            model.getPhotoProfile(dataPerson,function(err3, result3) {callback(null,result3)}); //get a vip information
+        },
+        function (callback) {
+            model.getNationality(dataPerson,function(err4, result4) {callback(null,result4)}); //get a vip information
+        },
+        function (callback) {
+            model.getAllVipPictures(dataPerson,function(err5, result5) {callback(null,result5)});//get all pictures addresses of a vip
         }
         ],
         function (err,result) {
@@ -49,7 +55,9 @@ module.exports.Person = 	function(request, response){
             }
             response.lettre = result[0];
             response.vipPerson = result[1];
-            response.galerie = result[2];
+            response.photoProfile = result[2][0];
+            response.nationality = result[3][0];
+            response.galerie = result[4];
             response.render('repertoireVips', response);
         }
     );

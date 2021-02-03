@@ -11,10 +11,10 @@
 
 <div class="vip_details">
     {{#each vipPerson}}
-        <img src="/images/vip/{{this.PHOTO}}">
+        <img src="/images/vip/{{../photoProfile.PHOTO}}">
         <p>Nom : {{this.FIRSTNAME}} {{this.NAME}}</p>
         <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY' }} </p>
-        <p>Nationalité : {{this.NAT}}</p>
+        <p>Nationalité : {{../nationality.NAT}}</p>
 
         <!--Acteur ou realisateur-->
         <p>Profession : </p>
@@ -29,7 +29,7 @@
         <p>Principal(aux) album(s) : </p>
 
         <p>Mariage(s) : </p>
-        <p>Liaison(s) : </p>
+        <p>Liaison(s) : raison fin liaison :</p>
         <p>Qui suis-je ? : {{this.TXT}}</p>
     {{/each}}
     {{#each galerie}}
