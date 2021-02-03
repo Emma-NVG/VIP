@@ -1,15 +1,10 @@
 let HomeController = require('./../controllers/HomeController');
 let VipController = require('./../controllers/VipController');
 let AlbumController = require('./../controllers/AlbumController');
-let TestController = require('./../controllers/TestController');
-
 
 
 // Routes
 module.exports = function(app){
-
-// TODO tests à supprimer
-    app.get('/test', TestController.Test);
 
 // Main Routes
     app.get('/', HomeController.Index);

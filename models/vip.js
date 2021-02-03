@@ -1,16 +1,5 @@
 let db = require('../configDb');
 
-//TODO delete
-module.exports.test = function(callback) {
-    db.getConnection(function(err, connexion) {
-        if (!err) {
-            let sql = "SELECT COUNT(*) AS NB FROM vip ;";
-            connexion.query(sql, callback);
-            connexion.release();
-        }
-    });
-};
-
 //get all letters that matches the first letter of a vip name in the database
 module.exports.repertoireLettre = function(callback) {
     db.getConnection(function(err, connexion) {
