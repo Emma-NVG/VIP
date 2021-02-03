@@ -44,18 +44,18 @@ module.exports.person = function(data,callback) {
             connexion.query(sql, callback);
             connexion.release();
         }
-    });
+    });module.exports.gallery = function(data,callback) {
+        db.getConnection(function(err, connexion) {
+            if (!err) {
+                let sql =   "SELECT PHOTO_ADRESSE AS PIC FROM photo p " +
+                    "JOIN vip v ON v.VIP_NUMERO=p.VIP_NUMERO " +
+                    "WHERE v.VIP_NOM='"+data+"' AND PHOTO_NUMERO!=1;";
+                connexion.query(sql, callback);
+                connexion.release();
+            }
+        });
+    };
 };
 
 // get all pictures of a vip from the vip name
-module.exports.gallery = function(data,callback) {
-    db.getConnection(function(err, connexion) {
-        if (!err) {
-            let sql =   "SELECT PHOTO_ADRESSE AS PIC FROM photo p " +
-                        "JOIN vip v ON v.VIP_NUMERO=p.VIP_NUMERO " +
-                        "WHERE v.VIP_NOM='"+data+"' AND PHOTO_NUMERO!=1;";
-            connexion.query(sql, callback);
-            connexion.release();
-        }
-    });
-};
+
