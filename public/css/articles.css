@@ -1,0 +1,19 @@
+.article {
+    border: 1px solid black;
+    width: 60%;
+    text-align: left;
+    padding: 0 1%;
+}
+
+aside {
+    float: right;
+    width: 20%;
+    border: 1px solid black;
+}
+aside img {
+    background-color: black;
+    padding: 0 37%;
+}
+aside ol, aside ul {
+    padding: 0;
+}
