@@ -1,3 +1,4 @@
+
 {{>partialNavigation}}
 
 <div>
@@ -16,32 +17,106 @@
         <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY'}} </p>
         <p>Nationalité : {{../nationality.NAT}}</p>
 
-        <!--Acteur ou realisateur-->
-        <p>Profession : </p>
-        <p>Principal(aux) film(s) : </p>
-
-        <!--Couturier ou Mannequin-->
-        <p>Profession : </p>
-        <p>Principal(aux) défilé(s) : </p>
+        <!--Acteur-->
+        {{#if ../acteur}}
+            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Actrice{{else}}Acteur{{/ifCond}}<br>
+                Principal(aux) film(s) : </p>
+            {{#each ../acteur}}
+<!--                TODO continuer affichage info bulle-->
+                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.REALISATEUR}}"
+                                                                              data-toggle="preview"
+                                                                              title="{{this.REALISATEUR}}"
+                                                                              rel="preview vip"
+                                                                              data-img="/images/vip/aniston.jpg"
+                                                                              data-text="This is a preview "
+                                                                              >
+                {{this.REALISATEUR}}</a><br>
+            {{/each}}
+        {{/if}}
 
         <!--Chanteur-->
-        <p>Profession : </p>
-        <p>Principal(aux) album(s) : </p>
+        {{#if ../chanteur}}
+            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Chanteuse{{else}}Chanteur{{/ifCond}} ({{this.SPE}})<br>
+                Principal(aux) album(s) : </p>
+            {{#each ../chanteur}}
+                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) {{this.MDNOM}}<br>
+            {{/each}}
+        {{/if}}
 
+        <!--Couturier-->
+        {{#if ../couturier}}
+            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Couturière{{else}}Couturier{{/ifCond}}<br>
+                Principal(aux) défilé(s) : </p>
+            {{#each ../couturier}}
+                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}})<br>
+            {{/each}}
+        {{/if}}
+
+        <!--Mannequin-->
+        {{#if ../mannequin}}
+            <p> Profession : Mannequin<br>
+                Principal(aux) défilé(s) : </p>
+            {{#each ../mannequin}}
+                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.COUTURIER}}">{{this.COUTURIER}}</a><br>
+            {{/each}}
+        {{/if}}
+
+        <!--Realisateur-->
+        {{#if ../realisateur}}
+            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Réalisatrice{{else}}Réalisateur{{/ifCond}}<br>
+                Principal(aux) film(s) : </p>
+            {{#each ../realisateur}}
+                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}})<br>
+            {{/each}}
+        {{/if}}
+
+        <!--Marriages-->
+        {{#if ../mariage}}
         <p>Mariage(s) : </p>
             {{#each ../mariage}}
                 <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}} {{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}} {{/if}}) lieu : {{this.LIEU}}</span><br>
             {{/each}}
+        {{/if}}
+
+        <!--Liaisons-->
+        {{#if ../liaison}}
         <p>Liaison(s) : </p>
             {{#each ../liaison}}
                 <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}</span><br>
             {{/each}}
+        {{/if}}
+
+        <!--Description-->
         <p>Qui suis-je ? : {{this.TXT}}</p>
+
     {{/each}}
+
+    <!--Galerie Photo-->
     {{#each galerie}}
         <img src="/images/vip/{{this.PIC}}" class="gallery_img">
     {{/each}}
 </div>
+
+<div>
+    <img src="">
+
+</div>
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="preview"]').popover({
+            html:true,
+            placement: 'top',
+            trigger: 'hover',
+            content: function () {return '' +
+                    '<img src="'+$(this).data('img') + '" />'+
+                    '<p>'+$(this).data('text') + '</p>'
+                    ;}
+        });
+    });
+</script>
+
+
+
 
 
 

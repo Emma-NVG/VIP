@@ -52,6 +52,21 @@ module.exports.Person = 	function(request, response){
         },
         function (callback) {
             model.getMariage(dataPerson,function(err7, result7) {callback(null,result7)}); //get mariages of a vip
+        },
+        function (callback) {
+            model.getProfessionMannequin(dataPerson,function(err8, result8) {callback(null,result8)}); //get profession of a vip
+        },
+        function (callback) {
+            model.getProfessionCouturier(dataPerson,function(err9, result9) {callback(null,result9)}); //get profession of a vip
+        },
+        function (callback) {
+            model.getProfessionChanteur(dataPerson,function(err10, result10) {callback(null,result10)}); //get profession of a vip
+        },
+        function (callback) {
+            model.getProfessionActeur(dataPerson,function(err11, result11) {callback(null,result11)}); //get profession of a vip
+        },
+        function (callback) {
+            model.getProfessionRealisateur(dataPerson,function(err12, result12) {callback(null,result12)}); //get profession of a vip
         }
         ],
         function (err,result) {
@@ -66,6 +81,11 @@ module.exports.Person = 	function(request, response){
             response.galerie = result[4];
             response.liaison = result[5];
             response.mariage = result[6];
+            response.mannequin = result[7];
+            response.couturier = result[8];
+            response.chanteur = result[9];
+            response.acteur = result[10];
+            response.realisateur = result[11];
             response.render('repertoireVips', response);
         }
     );

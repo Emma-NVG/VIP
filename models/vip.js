@@ -25,7 +25,7 @@ module.exports.getAllVipWithFirstLetter = function(data,callback) {
 module.exports.getVip = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql =   "SELECT VIP_NOM AS NAME,VIP_PRENOM AS FIRSTNAME, VIP_NAISSANCE AS DATE, VIP_TEXTE AS TXT FROM vip v " +
+            let sql =   "SELECT VIP_NOM AS NAME,VIP_PRENOM AS FIRSTNAME, VIP_NAISSANCE AS DATE, VIP_TEXTE AS TXT, VIP_SEXE AS SEXE FROM vip v " +
                         "WHERE v.VIP_NOM='"+data+"' ;";
             connexion.query(sql, callback);
             connexion.release();
@@ -97,6 +97,81 @@ module.exports.getMariage = function(data,callback) {
                         "SELECT DATE_EVENEMENT AS DATE, MARIAGE_FIN AS DATEFIN, MARIAGE_LIEU AS LIEU,v2.VIP_NOM AS NOM FROM mariage m " +
                         "JOIN vip v ON v.VIP_NUMERO=m.VIP_VIP_NUMERO " +
                         "JOIN vip v2 ON v2.VIP_NUMERO=m.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.getProfessionMannequin = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =   "SELECT DEFILE_LIEU AS LIEU, DEFILE_DATE AS DATE, v2.VIP_NOM AS COUTURIER FROM mannequin m " +
+                        "JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO " +
+                        "JOIN defiledans dd ON m.VIP_NUMERO=dd.VIP_NUMERO " +
+                        "JOIN defile d ON d.DEFILE_NUMERO=dd.DEFILE_NUMERO " +
+                        "JOIN couturier c ON c.VIP_NUMERO=d.VIP_NUMERO " +
+                        "JOIN vip v2 ON v2.VIP_NUMERO=c.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+//TODO associer mannequin avec defile
+module.exports.getProfessionCouturier = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =  "SELECT DEFILE_LIEU AS LIEU, DEFILE_DATE AS DATE FROM couturier c " +
+                        "JOIN vip v ON v.VIP_NUMERO=c.VIP_NUMERO " +
+                        "JOIN defile d ON d.VIP_NUMERO=c.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.getProfessionChanteur = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =  "SELECT CHANTEUR_SPECIALITE AS SPE, ALBUM_TITRE AS TITRE, ALBUM_DATE AS DATE, MAISONDISQUE_NOM AS MDNOM FROM chanteur c " +
+                        "JOIN vip v ON v.VIP_NUMERO=c.VIP_NUMERO " +
+                        "JOIN composer co ON co.VIP_NUMERO=c.VIP_NUMERO " +
+                        "JOIN album a ON a.ALBUM_NUMERO=co.ALBUM_NUMERO " +
+                        "JOIN maisondisque md ON md.MAISONDISQUE_NUMERO=a.MAISONDISQUE_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+module.exports.getProfessionActeur = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =   "SELECT FILM_TITRE AS TITRE, FILM_DATEREALISATION AS DATE, v2.VIP_NOM AS REALISATEUR FROM acteur a " +
+                        "JOIN vip v ON v.VIP_NUMERO=a.VIP_NUMERO " +
+                        "JOIN joue j ON j.VIP_NUMERO=a.VIP_NUMERO " +
+                        "JOIN film f ON f.FILM_NUMERO=j.FILM_NUMERO " +
+                        "JOIN realisateur r ON f.VIP_NUMERO=r.VIP_NUMERO " +
+                        "JOIN vip v2 ON v2.VIP_NUMERO=r.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
+//TODO associer acteurs avec film
+module.exports.getProfessionRealisateur = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =  "SELECT FILM_TITRE AS TITRE, FILM_DATEREALISATION AS DATE FROM realisateur r " +
+                        "JOIN vip v ON v.VIP_NUMERO=r.VIP_NUMERO " +
+                        "JOIN film f ON f.VIP_NUMERO=r.VIP_NUMERO " +
                         "WHERE v.VIP_NOM='"+data+" '";
             connexion.query(sql, callback);
             connexion.release();
