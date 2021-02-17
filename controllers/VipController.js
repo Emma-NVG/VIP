@@ -49,6 +49,9 @@ module.exports.Person = 	function(request, response){
         },
         function (callback) {
             model.getLiaison(dataPerson,function(err6, result6) {callback(null,result6)}); //get liaison of a vip
+        },
+        function (callback) {
+            model.getMariage(dataPerson,function(err7, result7) {callback(null,result7)}); //get mariages of a vip
         }
         ],
         function (err,result) {
@@ -61,7 +64,8 @@ module.exports.Person = 	function(request, response){
             response.photoProfile = result[2][0];
             response.nationality = result[3][0];
             response.galerie = result[4];
-            response.liaison = result[5]; console.log(result[5]);
+            response.liaison = result[5];
+            response.mariage = result[6];
             response.render('repertoireVips', response);
         }
     );

@@ -29,6 +29,9 @@
         <p>Principal(aux) album(s) : </p>
 
         <p>Mariage(s) : </p>
+            {{#each ../mariage}}
+                <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}} {{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}} {{/if}}) lieu : {{this.LIEU}}</span><br>
+            {{/each}}
         <p>Liaison(s) : </p>
             {{#each ../liaison}}
                 <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}</span><br>

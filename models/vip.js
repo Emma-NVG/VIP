@@ -87,5 +87,22 @@ module.exports.getLiaison = function(data,callback) {
     });
 };
 
+module.exports.getMariage = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =   "SELECT DATE_EVENEMENT AS DATE, MARIAGE_FIN AS DATEFIN, MARIAGE_LIEU AS LIEU, v2.VIP_NOM AS NOM FROM mariage m " +
+                        "JOIN vip v ON v.VIP_NUMERO=m.VIP_NUMERO JOIN vip v2 ON v2.VIP_NUMERO=m.VIP_VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '" +
+                        "UNION " +
+                        "SELECT DATE_EVENEMENT AS DATE, MARIAGE_FIN AS DATEFIN, MARIAGE_LIEU AS LIEU,v2.VIP_NOM AS NOM FROM mariage m " +
+                        "JOIN vip v ON v.VIP_NUMERO=m.VIP_VIP_NUMERO " +
+                        "JOIN vip v2 ON v2.VIP_NUMERO=m.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
 
 
