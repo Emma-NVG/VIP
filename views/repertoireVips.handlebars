@@ -13,7 +13,7 @@
     {{#each vipPerson}}
         <img src="/images/vip/{{../photoProfile.PHOTO}}">
         <p>Nom : {{this.FIRSTNAME}} {{this.NAME}}</p>
-        <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY' }} </p>
+        <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY'}} </p>
         <p>Nationalité : {{../nationality.NAT}}</p>
 
         <!--Acteur ou realisateur-->
@@ -29,7 +29,10 @@
         <p>Principal(aux) album(s) : </p>
 
         <p>Mariage(s) : </p>
-        <p>Liaison(s) : raison fin liaison :</p>
+        <p>Liaison(s) : </p>
+            {{#each ../liaison}}
+                <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}</span><br>
+            {{/each}}
         <p>Qui suis-je ? : {{this.TXT}}</p>
     {{/each}}
     {{#each galerie}}

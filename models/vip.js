@@ -61,12 +61,31 @@ module.exports.getAllVipPictures = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
             let sql =   "SELECT PHOTO_ADRESSE AS PIC FROM photo p " +
-                "JOIN vip v ON v.VIP_NUMERO=p.VIP_NUMERO " +
-                "WHERE v.VIP_NOM='"+data+"' AND PHOTO_NUMERO!=1;";
+                        "JOIN vip v ON v.VIP_NUMERO=p.VIP_NUMERO " +
+                        "WHERE v.VIP_NOM='"+data+"' AND PHOTO_NUMERO!=1;";
             connexion.query(sql, callback);
             connexion.release();
         }
     });
 };
+
+module.exports.getLiaison = function(data,callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            let sql =   "SELECT LIAISON_MOTIFFIN AS MOTIF, DATE_EVENEMENT AS DATE, v2.VIP_NOM AS NOM FROM liaison l "+
+                        "JOIN vip v ON v.VIP_NUMERO=l.VIP_NUMERO "+
+                        "JOIN vip v2 ON v2.VIP_NUMERO=l.VIP_VIP_NUMERO "+
+                        "WHERE v.VIP_NOM='"+data+" '"+
+                        "UNION "+
+                        "SELECT LIAISON_MOTIFFIN AS MOTIF, DATE_EVENEMENT AS DATE,v2.VIP_NOM AS NOM FROM liaison l "+
+                        "JOIN vip v ON v.VIP_NUMERO=l.VIP_VIP_NUMERO "+
+                        "JOIN vip v2 ON v2.VIP_NUMERO=l.VIP_NUMERO "+
+                        "WHERE v.VIP_NOM='"+data+" '";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
+
 
 
