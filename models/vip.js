@@ -152,13 +152,14 @@ module.exports.getProfessionChanteur = function(data,callback) {
 module.exports.getProfessionActeur = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql =   "SELECT FILM_TITRE AS TITRE, FILM_DATEREALISATION AS DATE, v2.VIP_NOM AS REALISATEUR FROM acteur a " +
-                        "JOIN vip v ON v.VIP_NUMERO=a.VIP_NUMERO " +
-                        "JOIN joue j ON j.VIP_NUMERO=a.VIP_NUMERO " +
-                        "JOIN film f ON f.FILM_NUMERO=j.FILM_NUMERO " +
-                        "JOIN realisateur r ON f.VIP_NUMERO=r.VIP_NUMERO " +
-                        "JOIN vip v2 ON v2.VIP_NUMERO=r.VIP_NUMERO " +
-                        "WHERE v.VIP_NOM='"+data+" '";
+            let sql =   "SELECT FILM_TITRE AS TITRE, FILM_DATEREALISATION AS DATE, v2.VIP_NOM AS REALISATEUR, PHOTO_ADRESSE AS PHOTO FROM acteur a "+
+                        "JOIN vip v ON v.VIP_NUMERO=a.VIP_NUMERO "+
+                        "JOIN joue j ON j.VIP_NUMERO=a.VIP_NUMERO "+
+                        "JOIN film f ON f.FILM_NUMERO=j.FILM_NUMERO "+
+                        "JOIN realisateur r ON f.VIP_NUMERO=r.VIP_NUMERO "+
+                        "JOIN vip v2 ON v2.VIP_NUMERO=r.VIP_NUMERO "+
+                        "JOIN photo p ON p.VIP_NUMERO=r.VIP_NUMERO "+
+                        "WHERE v.VIP_NOM='"+data+" ' AND PHOTO_NUMERO=1 ";
             connexion.query(sql, callback);
             connexion.release();
         }
