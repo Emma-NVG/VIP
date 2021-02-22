@@ -5,7 +5,7 @@
     {{#each listOfPerson}}
         <div class="list_photo_name">
             <img src="/images/vip/{{this.PHOTO}}">
-            <a href="/person/{{this.NAME}}"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
+            <a href="/person/{{this.NUM}}"><span>{{this.FIRSTNAME}} {{this.NAME}}</span></a>
         </div>
     {{/each}}
 </div>
@@ -23,14 +23,12 @@
                 Principal(aux) film(s) : </p>
             {{#each ../acteur}}
 <!--                TODO continuer affichage info bulle-->
-                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.REALISATEUR}}"
+                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUMRE}}"
                                                                               data-toggle="preview"
                                                                               title="{{this.REALISATEUR}}"
                                                                               rel="preview vip"
                                                                               data-img="/images/vip/{{this.PHOTO}}"
-                                                                              data-text="This is a preview "
-                                                                              >
-                {{this.REALISATEUR}}</a><br>
+                                                                              data-text="{{text this.TXT 100}}">{{this.REALISATEUR}}</a><br>
             {{/each}}
         {{/if}}
 
@@ -57,7 +55,12 @@
             <p> Profession : Mannequin<br>
                 Principal(aux) défilé(s) : </p>
             {{#each ../mannequin}}
-                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.COUTURIER}}">{{this.COUTURIER}}</a><br>
+                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUM}}"
+                                                                             data-toggle="preview"
+                                                                             title="{{this.COUTURIER}}"
+                                                                             rel="preview vip"
+                                                                             data-img="/images/vip/{{this.PHOTO}}"
+                                                                             data-text="{{text this.TXT 100}}">{{this.COUTURIER}}</a><br>
             {{/each}}
         {{/if}}
 
@@ -74,7 +77,15 @@
         {{#if ../mariage}}
         <p>Mariage(s) : </p>
             {{#each ../mariage}}
-                <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}} {{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}} {{/if}}) lieu : {{this.LIEU}}</span><br>
+                <span> - <a href="/person/{{this.NUM}}"
+                            data-toggle="preview"
+                            title="{{this.NOM}}"
+                            rel="preview vip"
+                            data-img="/images/vip/{{this.PHOTO}}"
+                            data-text="{{text this.TXT 100}}">{{this.NOM}}</a>
+                    ({{formatDate this.DATE 'MMMM YYYY'}} {{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}} {{/if}}) lieu : {{this.LIEU}}
+                </span>
+                <br>
             {{/each}}
         {{/if}}
 
@@ -82,7 +93,15 @@
         {{#if ../liaison}}
         <p>Liaison(s) : </p>
             {{#each ../liaison}}
-                <span> - <a href="/person/{{this.NOM}}">{{this.NOM}}</a> ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}</span><br>
+                <span> - <a href="/person/{{this.NUM}}"
+                            data-toggle="preview"
+                            title="{{this.NOM}}"
+                            rel="preview vip"
+                            data-img="/images/vip/{{this.PHOTO}}"
+                            data-text="{{text this.TXT 100}}">{{this.NOM}}</a>
+                    ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}
+                </span>
+                <br>
             {{/each}}
         {{/if}}
 

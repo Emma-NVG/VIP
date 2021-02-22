@@ -14,6 +14,7 @@ function hbsHelpers(handlebars) {
                 return parseInt(value) + 1;
             },
 
+
             // exemple d'utilisation dans handlebars {{formatDate vip.VIP_NAISSANCE 'MMMM YYYY' }}
             // --> 05 novembre 1978
             formatDate: function (date, format) {
@@ -63,6 +64,7 @@ function hbsHelpers(handlebars) {
                 }); // fin moment
                 return moment(date).format(format);
             },
+
             /* Exemple d'utilisation :
             {{#ifCond  this.vil_num '<' 10}}
                plus petit
@@ -91,6 +93,10 @@ function hbsHelpers(handlebars) {
                     default:
                         return options.inverse(this);
                 }
+            },
+            /* Exemple d'utilisation :*/
+            text : function (value,numberWords) {
+                return value.substr(0,numberWords)+"...";
             }
         }
     });
