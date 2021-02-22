@@ -83,7 +83,7 @@
                             rel="preview vip"
                             data-img="/images/vip/{{this.PHOTO}}"
                             data-text="{{text this.TXT 100}}">{{this.NOM}}</a>
-                    ({{formatDate this.DATE 'MMMM YYYY'}} {{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}} {{/if}}) lieu : {{this.LIEU}}
+                    ({{formatDate this.DATE 'MMMM YYYY'}}{{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}}{{/if}}) lieu : {{this.LIEU}}
                 </span>
                 <br>
             {{/each}}
@@ -112,14 +112,19 @@
 
     <!--Galerie Photo-->
     {{#each galerie}}
-        <img src="/images/vip/{{this.PIC}}" class="gallery_img">
+<!--        <a href="/images/vip/{{this.PIC}}" rel="lytebox" title="Image {{inc @index}} / {{this.TOTAL}}"><img src="/images/vip/{{this.PIC}}" class="gallery_img"></a>-->
+        <a href="/images/vip/{{this.PIC}}"  title="Image {{inc @index}} / {{this.TOTAL}}"
+                                            data-toggle="lightbox"
+                                            data-title="{{this.SUJET}}"
+                                            data-footer="{{this.COM}} <br> <i>Image {{inc @index}}/ </i>">
+            <!--TODO ajouter le nombre d'images totales-->
+            <img src="/images/vip/{{this.PIC}}" class="gallery_img">
+        </a>
+
     {{/each}}
 </div>
 
-<div>
-    <img src="">
 
-</div>
 <script>
     $(document).ready(function() {
         $('[data-toggle="preview"]').popover({
@@ -131,6 +136,11 @@
                     '<p>'+$(this).data('text') + '</p>'
                     ;}
         });
+    });
+
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
     });
 </script>
 

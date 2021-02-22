@@ -60,7 +60,7 @@ module.exports.getNationality = function(data,callback) {
 module.exports.getAllVipPictures = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql =   "SELECT PHOTO_ADRESSE AS PIC FROM photo p " +
+            let sql =   "SELECT PHOTO_ADRESSE AS PIC, PHOTO_SUJET AS SUJET, PHOTO_COMMENTAIRE AS COM FROM photo p " +
                         "JOIN vip v ON v.VIP_NUMERO=p.VIP_NUMERO " +
                         "WHERE v.VIP_NUMERO='"+data+"' AND PHOTO_NUMERO!=1;";
             connexion.query(sql, callback);
