@@ -20,7 +20,6 @@ module.exports.getArticleDetails = (data, callback) => {
                 "WHERE v.VIP_NUMERO = '" + data + "';";
             connexion.query(sql, callback);
             connexion.release();
-            console.log(sql);
         }
     });
 };
@@ -28,7 +27,12 @@ module.exports.getArticleDetails = (data, callback) => {
 module.exports.getPhotoArticle = (data, callback) => {
     db.getConnection((err, connexion) => {
         if (!err) {
-            //NORMAL
+            let sql = "SELECT PHOTO_ADRESSE AS PHOTO FROM photo " +
+                "WHERE VIP_NUMERO = '" + data + "' AND PHOTO_NUMERO = " +
+                "(SELECT PHOTO_NUMERO FROM comporte c " +
+                "WHERE VIP_NUMERO = '" + data + "');";
+            connexion.query(sql, callback);
+            connexion.release();
         }
-    })
-}
+    });
+};
