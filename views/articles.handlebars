@@ -3,7 +3,7 @@
         <p>{{this.FIRSTNAME}} {{this.NAME}} ({{this.TITRE}}) <br><br>
             {{this.CONTENU}} <br>
             [Ajouté le {{formatDate this.DATEPUB 'dddd D MMMM YYYY'}}]
-            <a href="/person/{{this.NAME}}">voir sa fiche</a>
+            <a href="/person/{{this.NUM}}">voir sa fiche</a>
         </p>
     {{else}}
         <p class="empty">Choisissez un VIP pour voir les articles le concernant.</p>
@@ -14,7 +14,7 @@
     <ul>
         {{#each listOfPerson}}
             <ol>
-                <a href="/articles/{{this.NAME}}">{{this.FIRSTNAME}} {{this.NAME}}</a>
+                <a href="/articles/{{this.NUM}}">{{this.FIRSTNAME}} {{this.NAME}}</a>
             </ol>
         {{/each}}
     </ul>
