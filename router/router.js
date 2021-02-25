@@ -20,7 +20,7 @@ module.exports = function(app){
 
    //articles
     app.get('/articles', ArticlesController.ChoixVIP)
-    app.get('/articles/:nameVIP', ArticlesController.DisplayArticle)
+    app.get('/articles/:numVIP', ArticlesController.DisplayArticle)
 
 // tout le reste
     app.get('*', HomeController.NotFound);

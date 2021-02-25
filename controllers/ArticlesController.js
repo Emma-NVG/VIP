@@ -23,7 +23,7 @@ module.exports.ChoixVIP = (request, response) => {
 
 module.exports.DisplayArticle = (request, response) => {
     response.title = "";
-    let data = request.params.nameVIP;
+    let data = request.params.numVIP;
     async.parallel([
             (callback) => {
                 model.getVIPs((err, result) => {

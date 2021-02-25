@@ -17,10 +17,18 @@ module.exports.getArticleDetails = (data, callback) => {
                 "FROM article a " +
                 "INNER JOIN apoursujet s ON a.ARTICLE_NUMERO = s.ARTICLE_NUMERO " +
                 "INNER JOIN vip v ON s.VIP_NUMERO = v.VIP_NUMERO " +
-                "WHERE VIP_NOM = '" + data + "';";
+                "WHERE v.VIP_NUMERO = '" + data + "';";
             connexion.query(sql, callback);
             connexion.release();
             console.log(sql);
+        }
+    });
+};
+
+module.exports.getPhotoArticle = (data, callback) => {
+    db.getConnection((err, connexion) => {
+        if (!err) {
+            //NORMAL
         }
     })
 }
