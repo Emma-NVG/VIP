@@ -8,8 +8,6 @@ module.exports.ListerAlbum = 	function(request, response){
    response.title = 'Album des stars';
     let dataPerson = request.params.detail;
     let dataPhoto = request.params.number;
-    console.log(dataPhoto);
-    console.log(dataPerson);
     async.parallel([
             function (callback) {
                 model.getAllPictures(function(err, result) {callback(null,result)});
@@ -28,8 +26,12 @@ module.exports.ListerAlbum = 	function(request, response){
                 return;
             }
             response.galerie = result[0];
-            response.albumInfo = result[1]; console.log(result[1]);
-            response.max = result[2][0]; console.log(result[2]);
+            response.albumInfo = result[1];
+
+            //if no vip has been selected in the album
+            if (response.albumInfo != null){
+                response.max = result[2][0];
+            }
             response.render('listerAlbum', response);
         }
     );
