@@ -21,7 +21,7 @@ module.exports.getPhotoAndInfo = function(data,data2,callback) {
             connexion.query(sql, callback);
             connexion.release();
         }
-    });
+    });pour
 };
 
 module.exports.getNumberPhotos = function(data,callback) {
