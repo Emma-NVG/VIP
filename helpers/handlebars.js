@@ -13,6 +13,9 @@ function hbsHelpers(handlebars) {
             inc: function(value, options) {
                 return parseInt(value) + 1;
             },
+            dec: function(value, options) {
+                return parseInt(value) - 1;
+            },
 
 
             // exemple d'utilisation dans handlebars {{formatDate vip.VIP_NAISSANCE 'MMMM YYYY' }}

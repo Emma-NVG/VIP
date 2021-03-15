@@ -16,7 +16,8 @@ module.exports = function(app){
     app.get('/listPerson/:firstLetter', VipController.Repertoire);
     app.get('/person/:vipDetails', VipController.Person);
  // albums
-   app.get('/album', AlbumController.ListerAlbum);
+    app.get('/album', AlbumController.ListerAlbum);
+    app.get('/photoDetail/:detail/:number', AlbumController.ListerAlbum);
 
    //articles
     app.get('/articles', ArticlesController.ChoixVIP)

@@ -103,3 +103,20 @@ a  {
 .gallery_img{
     width:13%;
 }
+
+.album-aside{
+    width: 30%;
+    height: auto;
+    border: none;
+}
+
+.album-aside row{
+    border: 1px solid black;
+}
+
+.img-aside{
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    height: 150px;
+}

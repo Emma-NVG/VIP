@@ -1,0 +1,13 @@
+<div class="row">
+    {{#each galerie}}
+        <div class="col-4 d-table-cell p-1">
+            <a href="/photoDetail/{{this.NUM}}/1"><img src="/images/vip/{{this.PIC}}" class="img-aside"></a>
+        </div>
+    {{/each}}
+</div>
+<div class="row">
+    <a href=""><div><span><< Début</span></div></a>
+    <a href=""><div><span>< Précédent</span></div></a>
+    <a href=""><div><span>Suivant ></span></div></a>
+    <a href=""><div><span>Fin >></span></div></a>
+</div>
