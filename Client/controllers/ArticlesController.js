@@ -34,6 +34,11 @@ module.exports.DisplayArticle = (request, response) => {
                 model.getArticleDetails(data, (err2, result2) => {
                     callback(null, result2)
                 });
+            },
+            (callback) => {
+                model.getPhotoArticle(data, (err3, result3) => {
+                    callback(null, result3)
+                })
             }
         ],
         (err, result) => {
@@ -44,6 +49,7 @@ module.exports.DisplayArticle = (request, response) => {
             console.log(result[1]);
             response.listOfPerson = result[0];
             response.vipArticle = result[1];
+            response.vipPhoto = result[2];
             response.render('articles', response);
         });
 }

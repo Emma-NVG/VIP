@@ -8,11 +8,11 @@ let express         = require('express'),
 let app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
-app.set('port', 6800);
+app.set('port', 6900);
 app.set('views', path.join(__dirname, 'views'));
 
 // routes static, le routeur n'y aura pas accès
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(cookieParser());
 
@@ -32,7 +32,7 @@ app.use(function(request, response, next){
 
 let exphbs = require('express-handlebars');
 app.set('view engine', 'handlebars'); //nom de l'extension des fichiers
-let handlebars  = require('./helpers/handlebars.js')(exphbs); //emplacement des helpers
+let handlebars  = require('../helpers/handlebars.js')(exphbs); //emplacement des helpers
 // helpers : extensions d'handlebars
 
 app.engine('handlebars', handlebars.engine);

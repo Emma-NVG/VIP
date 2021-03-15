@@ -1,6 +1,9 @@
 <section class="article">
     {{#each vipArticle}}
         <p>{{this.FIRSTNAME}} {{this.NAME}} ({{this.TITRE}}) <br><br>
+            {{#each ../vipPhoto}}
+                <img src="/images/vip/{{this.PHOTO}}">
+            {{/each}}
             {{this.CONTENU}} <br>
             [Ajouté le {{formatDate this.DATEPUB 'dddd D MMMM YYYY'}}]
             <a href="/person/{{this.NUM}}">voir sa fiche</a>
