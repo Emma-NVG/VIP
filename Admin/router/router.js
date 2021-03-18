@@ -1,7 +1,7 @@
 const HomeController = require('./../controllers/HomeController');
 const ConnexionController = require('./../controllers/ConnexionController');
-const VipController = require('./../controllers/VipController');
 const PhotoController = require('./../controllers/PhotoController');
+const VipAdminController = require("../controllers/VipAdminController");
 
 module.exports = function (app) {
 
@@ -10,7 +10,9 @@ module.exports = function (app) {
     app.get('/accueil', HomeController.Index);
 
     //Vip
-    app.get('/vips', VipController.Vip);
+    app.get('/vipAdmin', VipAdminController.Vip);
+    app.post('/addVip', VipAdminController.AddVip);
+    app.post('/modifyVip', VipAdminController.ModifyVip);
 
     //Photos
     app.get('/photos', PhotoController.Photo);
