@@ -12,7 +12,7 @@
     <label for="date">Date de naissance : </label><input type="date" name="date" id="date"><br>
 
     <label for="nat">Nationalité : </label>
-    <select type="text" name ="nat" id ="nat">
+    <select name ="nat" id ="nat">
         {{#each nationalities}}
             <option value="{{this.NATNUM}}">{{this.NATNOM}}</option>
         {{/each}}

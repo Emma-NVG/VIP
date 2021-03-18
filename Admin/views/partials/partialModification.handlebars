@@ -1,28 +1,40 @@
-<form action="/modifyVip" method="post">
-    <h2>Ajout VIPs</h2>
-    <input type="hidden" value="">
-    <label for="name">Nom* : </label><input type="text" name="name" id="name" required size="20" pattern="[A-Za-z].{2,}"><br>
-    <label for="fname">Prénom* : </label><input type="text" name="fname" id="fname" required size="20" pattern="[A-Za-z].{2,}"><br>
+{{#if vipSelected}}
+    {{#each vipSelected}}
+    <form action="/modifyVip" method="post">
+        <h2>Modification VIPs</h2>
+        <input type="hidden" name="id" value="{{this.NUM}}">
+        <label for="name">Nom* : </label><input type="text" name="name" id="name" required size="20" pattern="[A-Za-z].{2,}" value="{{this.NAME}}"><br>
+        <label for="fname">Prénom* : </label><input type="text" name="fname" id="fname" required size="20" pattern="[A-Za-z].{2,}" value="{{this.FIRSTNAME}}"><br>
 
-    <label for="sexe">Sexe : </label>
-    <select type="text" name="sex" id="sex">
-        <option value="F">Féminin</option>
-        <option value="M">Masculin</option>
-    </select><br>
+        <label for="sexe">Sexe : </label>
+        <select type="text" name="sex" id="sex">
+            <option value="F" {{#ifCond this.SEXE '==' "F"}}selected{{/ifCond}}>Féminin</option>
+            <option value="M" {{#ifCond this.SEXE '==' "M"}}selected{{/ifCond}}>Masculin</option>
+        </select><br>
 
-    <label for="date">Date de naissance : </label><input type="date" name="date" id="date"><br>
+        <label for="date">Date de naissance : </label><input type="date" name="date" id="date" value="{{formatDate this.DATE 'YYYY-MM-DD'}}"><br>
 
-    <label for="nat">Nationalité : </label>
-    <select type="text" name ="nat" id ="nat">
-        {{#each nationalities}}
-            <option value="{{this.NATNUM}}">{{this.NATNOM}}</option>
-        {{/each}}
-    </select><br>
+        <label for="nat">Nationalité : </label>
+        <select type="text" name ="nat" id ="nat">
+            {{#each ../nationalities}}
+                <option value="{{this.NATNUM}}" {{#ifCond ../this.NAT '==' this.NATNUM }}selected{{/ifCond}}>{{this.NATNOM}}</option>
+            {{/each}}
+        </select><br>
 
-    <label for="com">Commentaire : </label><textarea name="com" id="com"></textarea><br>
-    <label for="img">Sélectionner l'image</label><input type="file" accept="accept= image/*" name="img" id="img"><br>
-    <label for="subject">Sujet : </label><input type="text" name="subject" id="subject"><br>
-    <label for="com_img">Commentaire : </label><textarea name="com_img" id="com_img"></textarea><br>
+        <label for="com">Commentaire : </label><textarea name="com" id="com">{{this.TXT}}</textarea><br>
 
-    <input type="submit" name="submit" id="submit">
-</form>
+        <input type="submit" name="submit" id="submit">
+    </form>
+    {{/each}}
+{{else}}
+    <form action="/vipChoice" method="post">
+        <h2>Modification VIPs</h2>
+        <label for="vip">Choisissez un vip : </label>
+        <select name ="vip" id ="vip">
+            {{#each vips}}
+                <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+            {{/each}}
+        </select><br>
+        <input type="submit" name="submit" id="submit">
+    </form>
+{{/if}}

@@ -1,21 +1,35 @@
+
 <section class="row">
     <div class="col-4">
         <aside>
             <img src="/images/vips.png" alt="VIPs">
             <ul>
-                <li>Ajouter</li>
-                <li>Modifier</li>
-                <li>Supprimer</li>
+                <li><button onclick="myFunction('add')">Ajouter</button></li>
+                <li><button onclick="myFunction('modif')">Modifier</button></li>
+                <li><button onclick="myFunction('del')">Supprimer</button></li>
             </ul>
         </aside>
     </div>
-    <div class="col-8">
+    <div id="add" class="col-8 admin" style="display: block">
         {{>partialAdd}}
     </div>
-<!--    <div class="col-8">-->
-<!--        {{>partialModification}}-->
-<!--    </div>-->
-<!--    <div class="col-8">-->
-<!--        {{>partialDelete}}-->
-<!--    </div>-->
+    <div id="modif" class="col-8 admin" style="display: none">
+        {{>partialModification}}
+    </div>
+    <div id="del" class="col-8 admin" style="display: none">
+        {{>partialDelete}}
+    </div>
 </section>
+
+<script>
+    function myFunction(a) {
+        var y = document.getElementsByClassName("admin");
+        for (const i in y){
+            console.log(i);
+            y.item(i).style.display = "none";
+        }
+        var x = document.getElementById(a);
+        x.style.display = "block";
+    }
+</script>
+

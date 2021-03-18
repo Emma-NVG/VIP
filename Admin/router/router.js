@@ -11,8 +11,16 @@ module.exports = function (app) {
 
     //Vip
     app.get('/vipAdmin', VipAdminController.Vip);
+
+    /* == Add part == */
     app.post('/addVip', VipAdminController.AddVip);
+
+    /* == Modify part == */
+    app.post('/vipChoice', VipAdminController.VipInfo);
     app.post('/modifyVip', VipAdminController.ModifyVip);
+
+    /* == Delete part == */
+    app.post('/deleteVip', VipAdminController.DeleteVip);
 
     //Photos
     app.get('/photos', PhotoController.Photo);
