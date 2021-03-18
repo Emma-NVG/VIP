@@ -25,7 +25,18 @@ module.exports.AddVip = function (request, response) {
     response.title = "Addition of vip in database";
     async.parallel([
             function (callback) {
-                model.insertVip(request.body,function (err, result) {callback(null,result)});
+                model.insertVip(request.body,function (err, result) {
+                    if(err){
+                        console.log(err);
+                        return;
+                    }
+                    model.insertPhoto(result.insertId,request.body,function (err, result) {
+                        if(err){
+                            console.log(err);
+                            return;
+                        }
+                    });
+                });
             }
         ],
 

@@ -27,16 +27,16 @@ module.exports.insertVip = function(data, callback) {
 };
 
 //insert a photo into database
-// module.exports.insertPhoto = function(data, callback) {
-//     db.getConnection(function(err, connexion) {
-//         if (!err) {
-//             let vip_numero = ;
-//             let sql = "INSERT INTO photo (VIP_NUMERO, PHOTO_SUJET, PHOTO_COMMENTAIRE, PHOTO_ADRESSE) VALUES ("+ vip_numero+", '"+data.subject+ "', '"+data.com_img+"', '"+data.img+"')";
-//             connexion.query(sql, callback);
-//             connexion.release();
-//         }
-//     });
-// };
+module.exports.insertPhoto = function(id,data, callback) {
+    db.getConnection(function(err, connexion) {
+        if (!err) {
+            console.log(data.img);
+            let sql = "INSERT INTO photo (PHOTO_NUMERO,VIP_NUMERO, PHOTO_SUJET, PHOTO_COMMENTAIRE, PHOTO_ADRESSE) VALUES (1,"+id+", '"+data.subject+ "', '"+data.com_img+"', '"+data.img+"')";
+            connexion.query(sql, callback);
+            connexion.release();
+        }
+    });
+};
 
 /*======== MODIFY PART ========*/
 //insert a vip into database
