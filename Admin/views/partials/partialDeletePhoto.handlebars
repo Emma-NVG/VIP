@@ -1,0 +1,10 @@
+<form action="/deleteVip" method="post">
+    <h2>Suppression Photo</h2>
+    <label for="vip">Choisissez un vip : </label>
+    <select name ="vip" id ="vip">
+        {{#each vips}}
+            <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+        {{/each}}
+    </select><br>
+    <input type="submit" name="submit" id="submit">
+</form>

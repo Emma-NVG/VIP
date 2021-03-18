@@ -24,4 +24,5 @@ module.exports = function (app) {
 
     //Photos
     app.get('/photos', PhotoController.Photo);
+    app.post('/addPhoto', PhotoController.AddPhoto);
 }
