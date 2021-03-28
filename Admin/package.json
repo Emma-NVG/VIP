@@ -13,7 +13,10 @@
     "moment": "2.29",
     "mysql": ">2.18.0",
     "nodemon": "^2.0.7",
-    "string": "3.3",
-    "unidecode": "*"
+    "string": "3.3"
+  },
+  "devDependencies": {
+    "bcrypt": "^5.0.1",
+    "cryptr": "^6.0.2"
   }
 }

@@ -25,6 +25,11 @@
                 <li><a href="/accueil">ACCUEIL</a></li>
                 <li class="traitVertical"><a href="/vipAdmin">VIPS</a></li>
                 <li class="traitVertical"><a href="/photos">PHOTOS</a></li>
+                  {{#if session.login}}
+                      <li class="traitVertical"><a href="/deconnexion">DECONNEXION</a></li>
+                  {{else}}
+                      <li class="traitVertical"><a href="/">CONNEXION</a></li>
+                  {{/if}}
               </ul>
             </div>
             <div id="contenu">
