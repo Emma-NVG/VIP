@@ -87,8 +87,9 @@ module.exports.modifyVip = function(data, callback) {
 module.exports.deletePhotos = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "DELETE FROM photo WHERE VIP_NUMERO = "+data.vip+"";
-            connexion.query(sql, callback);
+            let sql = "DELETE FROM `photo` WHERE `photo`.`VIP_NUMERO` = "+data+"";
+
+            connexion.query(sql, callback); console.log(sql);
         }
     });
 };
@@ -96,8 +97,8 @@ module.exports.deletePhotos = function(data, callback) {
 module.exports.deleteVip = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "DELETE FROM vip WHERE vipVIP_NUMERO = "+data.vip+"";
-            connexion.query(sql, callback);
+            let sql = "DELETE FROM vip WHERE vip.VIP_NUMERO = "+data+"";
+            connexion.query(sql, callback); console.log(sql);
         }
     });
 };

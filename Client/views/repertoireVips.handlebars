@@ -22,7 +22,6 @@
             <p> Profession : {{#ifCond this.SEXE '==' "F" }}Actrice{{else}}Acteur{{/ifCond}}<br>
                 Principal(aux) film(s) : </p>
             {{#each ../acteur}}
-<!--                TODO continuer affichage info bulle-->
                 - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUMRE}}"
                                                                               data-toggle="preview"
                                                                               title="{{this.REALISATEUR}}"

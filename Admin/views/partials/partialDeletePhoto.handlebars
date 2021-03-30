@@ -1,10 +1,23 @@
-<form action="/deleteVip" method="post">
-    <h2>Suppression Photo</h2>
-    <label for="vip">Choisissez un vip : </label>
-    <select name ="vip" id ="vip">
-        {{#each vips}}
-            <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+
+{{#if vip}}
+    <form action="/deletePhoto" method="post">
+        <h2>Suppression photo</h2>
+        <input type="hidden" name="id" value="{{choiceVip.NUM}}">
+        {{#each choiceVip}}
+            <input type="checkbox" id="myCheckbox1" />
+            <label for="myCheckbox1"><img src="/images/vip/{{this.PIC}}"/></label>
         {{/each}}
-    </select><br>
-    <input type="submit" name="submit" id="submit">
-</form>
+        <input type="submit" name="submit" id="submit" value="Supprimer">
+    </form>
+{{else}}
+    <form action="/deleteChoice" method="post">
+        <h2>Suppression Photo</h2>
+        <label for="vip">Choisissez un vip : </label>
+        <select name ="vip" id ="vip">
+            {{#each vips}}
+                <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+            {{/each}}
+        </select><br>
+        <input type="submit" name="submit" id="submit">
+    </form>
+{{/if}}

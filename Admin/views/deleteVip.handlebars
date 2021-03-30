@@ -1,0 +1,35 @@
+<section class="row">
+    <div class="col-4">
+        {{>partialNavigationVip}}
+    </div>
+    <div class="col-8">
+        {{#if vipSelected}}
+            {{#each vipSelected}}
+                <form action="/deleteVip/{{this.NUM}}" method="post">
+                    <h2>Suppression VIPs</h2>
+                    <p>Êtes-vous sûr(e) de vouloir supprimer {{this.FIRSTNAME}} {{this.NAME}} ?</p>
+                    <input type="submit" name="submit" id="submit" value="Valider">
+                    <input type="reset" value="Annuler">
+                </form>
+            {{/each}}
+        {{else}}
+            <form action="/vipChoice" method="post">
+                <h2>Suppression VIPs</h2>
+                <label for="vip">Choisissez un vip : </label>
+                <select name ="vip" id ="vip">
+                    {{#each vips}}
+                        <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+                    {{/each}}
+                </select><br>
+                <input type="hidden" name="action" value="D">
+                <input type="submit" name="submit" id="submit">
+            </form>
+        {{/if}}
+    </div>
+</section>
+
+
+
+
+
+

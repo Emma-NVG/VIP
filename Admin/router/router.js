@@ -10,19 +10,23 @@ module.exports = function (app) {
     app.get('/accueil', HomeController.Index);
 
     //Vip
-    app.get('/vipAdmin', VipAdminController.Vip);
+    app.get('/adminVip/:action', VipAdminController.Vip);
+    //Vip choice
+    app.post('/vipChoice', VipAdminController.VipInfo);
 
     /* == Add part == */
     app.post('/addVip', VipAdminController.AddVip);
 
     /* == Modify part == */
-    app.post('/vipChoice', VipAdminController.VipInfo);
     app.post('/modifyVip', VipAdminController.ModifyVip);
 
     /* == Delete part == */
-    app.post('/deleteVip', VipAdminController.DeleteVip);
+    app.post('/deleteVip/:id', VipAdminController.DeleteVip);
 
     //Photos
     app.get('/photos', PhotoController.Photo);
     app.post('/addPhoto', PhotoController.AddPhoto);
+    app.post('/deleteChoice', PhotoController.InfoPhoto);
+    app.post('/deletePhoto', PhotoController.DeletePhoto);
+
 }

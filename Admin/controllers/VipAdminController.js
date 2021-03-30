@@ -3,6 +3,7 @@ let model = require("../models/vipAdmin.js");
 
 module.exports.Vip = function (request, response) {
     response.title = "Administration Vips";
+    let action = request.params.action;
     async.parallel([
             function (callback) {
                 model.getAllNationalities(function (err, result) {callback(null,result)});
@@ -18,7 +19,17 @@ module.exports.Vip = function (request, response) {
             }
             response.nationalities = result[0];
             response.vips = result[1];
-            response.render('vipAdmin', response);
+            switch (action){
+                case "A": response.render('additionVip', response);
+                    break;
+                case "M": response.render('modificationVip', response);
+                    break;
+                case "D": response.render('deleteVip', response);
+                    break;
+                default: response.render('notFound', response);
+                    break;
+            }
+
         }
     );
 };
@@ -48,7 +59,7 @@ module.exports.AddVip = function (request, response) {
                 console.log(err);
                 return;
             }
-            response.redirect('/vipAdmin');
+            response.redirect('/adminVip/A');
         }
     );
 };
@@ -56,7 +67,7 @@ module.exports.AddVip = function (request, response) {
 
 /*===== Modification vip =====*/
 module.exports.VipInfo = function (request, response) {
-    response.title = "Modification Vips";
+    response.title = "Modification/Suppression Vips";
     async.parallel([
             function (callback) {
                 model.getAllNationalities(function (err, result) {callback(null,result)});
@@ -72,14 +83,18 @@ module.exports.VipInfo = function (request, response) {
             }
             response.nationalities = result[0];
             response.vipSelected = result[1];
-            response.render('vipAdmin', response);
+
+            if (request.body.action == "M"){
+                response.render('modificationVip', response);
+            }else{
+                response.render('deleteVip', response);
+            }
         }
     );
 };
 
 module.exports.ModifyVip = function (request, response) {
     response.title = "Modification of vip in database";
-    console.log(request.body)
     async.parallel([
             function (callback) {
                 model.modifyVip(request.body,function (err, result) {callback(null,result)});
@@ -90,7 +105,7 @@ module.exports.ModifyVip = function (request, response) {
                 console.log(err);
                 return;
             }
-            response.redirect('/vipAdmin');
+            response.redirect('/adminVip/M');
         }
     );
 };
@@ -98,12 +113,14 @@ module.exports.ModifyVip = function (request, response) {
 /*===== Deletion vip =====*/
 module.exports.DeleteVip = function (request, response) {
     response.title = "Deletion Vips";
+    let id = request.params.id;
+    console.log(id);
     async.parallel([
             function (callback) {
-                model.deletePhotos(request.body,function (err, result) {callback(null,result)});
+                model.deletePhotos(id,function (err, result) {callback(null,result)});
             },
             function (callback) {
-                model.deleteVip(request.body,function (err1, result1) {callback(null,result1)});
+                model.deleteVip(id,function (err1, result1) {callback(null,result1)});
             }
         ],
         function (err,result){
@@ -111,7 +128,7 @@ module.exports.DeleteVip = function (request, response) {
                 console.log(err);
                 return;
             }
-            response.redirect('/vipAdmin');
+            response.redirect('/adminVip/D');
         }
     );
 };

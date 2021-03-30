@@ -29,7 +29,6 @@ module.exports.AddPhoto = function (request, response) {
                         console.log(err);
                         return;
                     }
-                    console.log(result[0]);
                     model2.insertPhoto(result[0],request.body,function (err1, result1) {
                         if(err){
                             console.log(err);
@@ -47,6 +46,43 @@ module.exports.AddPhoto = function (request, response) {
                 return;
             }
             response.redirect('/photos');
+        }
+    );
+};
+
+//
+module.exports.DeletePhoto = function (request, response) {
+    response.title = "Deletion photos";
+    async.parallel([
+            function (callback) {
+                model2.deletePhotos(request.body,function (err, result) {callback(null,result)});
+
+            }
+        ],
+        function (err,result){
+            if(err){
+                console.log(err);
+                return;
+            }
+            response.redirect('/photos');
+        }
+    );
+};
+
+module.exports.InfoPhoto = function (request, response) {
+    response.title = "Deletion photos";
+    async.parallel([
+            function (callback) {
+                model2.infoPhoto(request.body,function (err, result) {callback(null,result)});
+            }
+        ],
+        function (err,result){
+            if(err){
+                console.log(err);
+                return;
+            }
+            response.choiceVip = result[0];
+            response.render('/photos', response);//TODO continuer -> faire des routes pour modif etc...
         }
     );
 };
