@@ -126,7 +126,6 @@ module.exports.getProfessionMannequin = function(data,callback) {
     });
 };
 
-//TODO associer mannequin avec defile
 module.exports.getProfessionCouturier = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
@@ -172,7 +171,6 @@ module.exports.getProfessionActeur = function(data,callback) {
     });
 };
 
-//TODO associer acteurs avec film
 module.exports.getProfessionRealisateur = function(data,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {

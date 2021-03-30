@@ -3,7 +3,7 @@
         {{#each albumInfo}}
             <div class="row">
                 <p>{{this.FIRSTNAME}} {{this.NAME}}</p>
-<!--            TODO carousel de photo du vip-->
+<!--            TODO carousel de photo du vip css-->
                 {{#ifCond this.PICNUM '==' 1}}<div class="col-4 invisible">{{else}}<div class="col-4">{{/ifCond}}<a href="/photoDetail/{{this.NUM}}/{{dec this.PICNUM}}"><span><<</span></a></div>
                 <div class="col-4">
                     <img src="/images/vip/{{this.PIC}}">

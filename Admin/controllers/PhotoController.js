@@ -70,7 +70,7 @@ module.exports.InfoPhoto = function (request, response) {
             }
             response.choiceVip = result[0];
             response.id = request.body.vip;
-            response.render('photos/deletionPhoto', response);//TODO continuer -> faire des routes pour modif etc...
+            response.render('photos/deletionPhoto', response);
         }
     );
 };
