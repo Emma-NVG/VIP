@@ -89,7 +89,7 @@ module.exports.deletePhotos = function(data, callback) {
         if (!err) {
             let sql = "DELETE FROM `photo` WHERE `photo`.`VIP_NUMERO` = "+data+"";
 
-            connexion.query(sql, callback); console.log(sql);
+            connexion.query(sql, callback);
         }
     });
 };
@@ -98,7 +98,7 @@ module.exports.deleteVip = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
             let sql = "DELETE FROM vip WHERE vip.VIP_NUMERO = "+data+"";
-            connexion.query(sql, callback); console.log(sql);
+            connexion.query(sql, callback);
         }
     });
 };

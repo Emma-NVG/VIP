@@ -26,8 +26,9 @@ module.exports.nbPhoto = function(data, callback) {
 module.exports.deletePhoto = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "DELETE FROM photo WHERE photo.PHOTO_NUMERO = "+ data.numero +"AND photo.VIP_NUMERO ="+ data.vip +"";
-            connexion.query(sql, callback);
+            console.log("numero" + data.num);
+            let sql = "DELETE FROM `photo` WHERE `photo`.`PHOTO_NUMERO`="+data.num+" AND `photo`.`VIP_NUMERO`="+ data.id +"";
+            connexion.query(sql, callback); console.log(sql);
             connexion.release();
         }
     });
@@ -37,7 +38,7 @@ module.exports.deletePhoto = function(data, callback) {
 module.exports.infoPhoto = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql = "SELECT PHOTO_ADRESSE AS PIC, VIP_NUMERO AS NUM FROM photo WHERE VIP_NUMERO ="+ data.vip +"";
+            let sql = "SELECT PHOTO_ADRESSE AS PIC, PHOTO_NUMERO AS PICNUM, VIP_NUMERO AS NUM FROM photo WHERE VIP_NUMERO ="+ data.vip +"";
             connexion.query(sql, callback);
             connexion.release();
         }

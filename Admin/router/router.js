@@ -24,7 +24,7 @@ module.exports = function (app) {
     app.post('/deleteVip/:id', VipAdminController.DeleteVip);
 
     //Photos
-    app.get('/photos', PhotoController.Photo);
+    app.get('/adminPhotos/:action', PhotoController.adminPhotos);
     app.post('/addPhoto', PhotoController.AddPhoto);
     app.post('/deleteChoice', PhotoController.InfoPhoto);
     app.post('/deletePhoto', PhotoController.DeletePhoto);

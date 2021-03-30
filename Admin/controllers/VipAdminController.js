@@ -20,11 +20,11 @@ module.exports.Vip = function (request, response) {
             response.nationalities = result[0];
             response.vips = result[1];
             switch (action){
-                case "A": response.render('additionVip', response);
+                case "A": response.render('vip/additionVip', response);
                     break;
-                case "M": response.render('modificationVip', response);
+                case "M": response.render('vip/modificationVip', response);
                     break;
-                case "D": response.render('deleteVip', response);
+                case "D": response.render('vip/deleteVip', response);
                     break;
                 default: response.render('notFound', response);
                     break;
@@ -85,9 +85,9 @@ module.exports.VipInfo = function (request, response) {
             response.vipSelected = result[1];
 
             if (request.body.action == "M"){
-                response.render('modificationVip', response);
+                response.render('vip/modificationVip', response);
             }else{
-                response.render('deleteVip', response);
+                response.render('vip/deleteVip', response);
             }
         }
     );

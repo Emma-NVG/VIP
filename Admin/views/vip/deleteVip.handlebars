@@ -9,7 +9,7 @@
                     <h2>Suppression VIPs</h2>
                     <p>Êtes-vous sûr(e) de vouloir supprimer {{this.FIRSTNAME}} {{this.NAME}} ?</p>
                     <input type="submit" name="submit" id="submit" value="Valider">
-                    <input type="reset" value="Annuler">
+                    <input type="button" value="Annuler" onclick="history.back()"  />
                 </form>
             {{/each}}
         {{else}}
