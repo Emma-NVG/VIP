@@ -1,7 +1,7 @@
 let express         = require('express'),
     session         = require('express-session'),
     cookieParser    = require('cookie-parser'),
-    bodyParser      = require('body-parser'), //pour récupérer les résultats des post
+    bodyParser      = require('body-parser'), //to retrieve post results
     http            = require('http'),
     path            = require('path');
 
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set('port', 6800);
 app.set('views', path.join(__dirname, 'views'));
 
-// routes static, le routeur n'y aura pas accès
+// static routes, router won't have access to it
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use(cookieParser());
@@ -23,7 +23,7 @@ app.use(session({
     saveUninitialized: true
 }));
 
-/* ces lignes permettent d'utiliser directement les variables de session dans handlebars
+/* these lines allow the direct utilization of session variables in handlebars
  UTILISATION : {{session.MaVariable}}  */
 app.use(function(request, response, next){
     response.locals.session = request.session;
@@ -31,14 +31,14 @@ app.use(function(request, response, next){
 });
 
 let exphbs = require('express-handlebars');
-app.set('view engine', 'handlebars'); //nom de l'extension des fichiers
-let handlebars  = require('../helpers/handlebars.js')(exphbs); //emplacement des helpers
-// helpers : extensions d'handlebars
+app.set('view engine', 'handlebars'); //name of file extensions
+let handlebars  = require('../helpers/handlebars.js')(exphbs); //location of helpers
+// helpers : handlebars' extensions
 
 app.engine('handlebars', handlebars.engine);
 
 
-// chargement du routeur
+// loading of router
 require('./router/router')(app);
 
 

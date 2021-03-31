@@ -581,7 +581,7 @@ DROP TABLE IF EXISTS `parametres`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `parametres` (
   `LOGIN` varchar(20) NOT NULL,
-  `PASSWD` varchar(200) NOT NULL
+  `PASSWD` varchar(300) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -591,7 +591,7 @@ CREATE TABLE `parametres` (
 
 LOCK TABLES `parametres` WRITE;
 /*!40000 ALTER TABLE `parametres` DISABLE KEYS */;
-INSERT INTO `parametres` VALUES ('admin','d30d83449db6ffb5158fb37d9faf7c158cd3a94efd17736be9a0c292923764a446dc');
+INSERT INTO `parametres` VALUES ('admin','543ff6aac05258fb34f7e36ea03f9a72c4f265aa7229f0c41032168928910229e0fe2327de5cd5c2605959bd76062462009d70c7bb0eaef52324d32aaca49dc4deadac0da3a86325dee127ce79e7d60f844ec4789f9a484ce32ae83fd657a72774d240054900be34ae3d9db62fc8f40d8e70');
 /*!40000 ALTER TABLE `parametres` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -689,4 +689,5 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
+DROP TABLE comporte --solving a bug when delete is needing (wrong FK constraint)
 -- Dump completed on 2019-01-27 15:25:37

@@ -1,12 +1,12 @@
 /*
-* config.Db contient les parametres de connection à la base de données
-* Il utilise le module mysql
-* il va créer aussi un pool de connexions utilisables
-* la méthode getConnection permet de se connecter à MySQL
+* config.Db contains the parameters for the connection to the database
+* It uses the mysql module
+* It creates a usable connection's pool
+* the method getConnection permits the connection to MySQL
 *
 */
 
-let mysql = require('mysql'); // voir https://github.com/felixge/node-mysql/
+let mysql = require('mysql');
 
 let pool  = mysql.createPool({
   host     : 'localhost',

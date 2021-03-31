@@ -1,29 +1,29 @@
 let HomeController = require('./../controllers/HomeController');
 let VipController = require('./../controllers/VipController');
 let AlbumController = require('./../controllers/AlbumController');
-
 let ArticlesController = require("../controllers/ArticlesController");
 
-// Routes
+/* ======= Routes ======= */
 module.exports = function(app){
 
-// Main Routes
+/* ======= Main Routes ======= */
     app.get('/', HomeController.Index);
     app.get('/accueil', HomeController.Index);
 
-// VIP
+/* ======= VIP ======= */
     app.get('/repertoire', VipController.Repertoire);
     app.get('/listPerson/:firstLetter', VipController.Repertoire);
     app.get('/person/:vipDetails', VipController.Person);
- // albums
+
+    /* ======= Albums ======= */
     app.get('/album', AlbumController.ListerAlbum);
     app.get('/photoDetail/:detail/:number', AlbumController.ListerAlbum);
 
-   //articles
+    /* ====== Articles ======= */
     app.get('/articles', ArticlesController.ChoixVIP)
     app.get('/articles/:numVIP', ArticlesController.DisplayArticle)
 
-// tout le reste
+/* ======= NotFound ======= */
     app.get('*', HomeController.NotFound);
     app.post('*', HomeController.NotFound);
 };

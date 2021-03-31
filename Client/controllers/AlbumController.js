@@ -1,23 +1,22 @@
 let async = require('async');
 let model = require("../models/album.js");
-let modelImport = require("../models/vip.js");
 
 // ////////////////////// L I S T E R     A L B U M S
 
 module.exports.ListerAlbum = 	function(request, response){
    response.title = 'Album des stars';
-    let dataPerson = request.params.detail;
-    let dataPhoto = request.params.number;
+    let vip_numero = request.params.detail;
+    let photo_numero = request.params.number;
     async.parallel([
             function (callback) {
-                model.getAllPictures(function(err, result) {callback(null,result)});
+                model.getAllPictures(function(err, result) {callback(null,result)}); //Get all pictures of vips
             }
             ,
             function (callback) {
-               model.getPhotoAndInfo(dataPerson, dataPhoto, function(err1, result1) {callback(null,result1)});
+               model.getPhotoAndInfo(vip_numero, photo_numero, function(err1, result1) {callback(null,result1)}); //Get picture of vip and the infos associated
             },
             function (callback) {
-                model.getNumberPhotos(dataPerson, function(err2, result2) {callback(null,result2)});
+                model.getNumberPhotos(vip_numero, function(err2, result2) {callback(null,result2)}); //Get number of pictures of vips and the infos associated
             }
         ],
         function (err,result) {

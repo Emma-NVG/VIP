@@ -5,14 +5,14 @@ let model = require("../models/vip.js");
 
 module.exports.Repertoire = 	function(request, response) {
     response.title = 'Répertoire des stars';
-    let data = request.params.firstLetter;
+    let firstLetter = request.params.firstLetter;
     async.parallel([
         function (callback) {
-            model.repertoireLettre(function (err, result) {callback(null,result)});
+            model.repertoireLettre(function (err, result) {callback(null,result)}); //Get all letters if there is a vip with a name whose first letter matches with it
         },
 
         function (callback) {
-            model.getAllVipWithFirstLetter(data, function (err2, result2) {callback(null,result2)});
+            model.getAllVipWithFirstLetter(firstLetter, function (err2, result2) {callback(null,result2)});// Get all vips whose name's first letter matches the letter in parameter
         }
         ],
 

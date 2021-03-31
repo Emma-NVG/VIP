@@ -4,7 +4,7 @@ let model = require("../models/articles.js")
 
 module.exports.ChoixVIP = (request, response) => {
     response.title = "";
-    async.parallel([
+    async.parallel([ //TODO remove async
             (callback) => {
                 model.getVIPs((err, result) => {
                     callback(null, result)
@@ -23,7 +23,7 @@ module.exports.ChoixVIP = (request, response) => {
 
 module.exports.DisplayArticle = (request, response) => {
     response.title = "";
-    let data = request.params.numVIP;
+    let vip_numero = request.params.numVIP;
     async.parallel([
             (callback) => {
                 model.getVIPs((err, result) => {
@@ -31,12 +31,12 @@ module.exports.DisplayArticle = (request, response) => {
                 })
             },
             (callback) => {
-                model.getArticleDetails(data, (err2, result2) => {
+                model.getArticleDetails(vip_numero, (err2, result2) => {
                     callback(null, result2)
                 });
             },
             (callback) => {
-                model.getPhotoArticle(data, (err3, result3) => {
+                model.getPhotoArticle(vip_numero, (err3, result3) => {
                     callback(null, result3)
                 })
             }
