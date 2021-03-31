@@ -3,19 +3,21 @@
         {{>partialNavigationPhotos}}
     </div>
     <div class="col-8">
-        <form action="/addPhoto" method="post">
-            <h2>Ajout d'une photo</h2>
-            <label for="vip">Nom du vip : </label>
-            <select name="vip" id="vip">
-                {{#each vips}}
-                    <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
-                {{/each}}
-            </select><br>
-            <label for="img">Adresse de la photo : </label><input type="file" accept="accept= image/*" name="img" id="img"><br>
-            <label for="subject">Titre : </label><input type="text" name="subject" id="subject"><br>
-            <label for="com_img">Un petit commentaire ? </label><textarea name="com_img" id="com_img"></textarea><br>
+        <form class="photos" action="/addPhoto" method="post">
+            <fieldset>
+                <legend>Ajout d'une photo</legend>
+                <label for="vip">Nom du vip : </label>
+                <select name="vip" id="vip">
+                    {{#each vips}}
+                        <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+                    {{/each}}
+                </select><br>
+                <label for="img">Adresse de la photo : </label><input type="file" accept="accept= image/*" name="img" id="img"><br>
+                <label for="subject">Titre : </label><input type="text" name="subject" id="subject"><br>
+                <label for="com_img">Un petit commentaire ? </label><textarea name="com_img" id="com_img"></textarea><br>
 
-            <input type="submit" name="submit" id="submit">
+                <input type="submit" name="submit" id="submit">
+            </fieldset>
         </form>
 
     </div>

@@ -1,0 +1,63 @@
+aside {
+    float: left;
+    width: 10vw;
+    border: 1px solid black;
+    background-color: black;
+    border-radius: 10%;
+}
+
+aside img[alt=VIPs] {
+    background-color: black;
+    padding: 10%;
+    border-radius: 10%;
+}
+aside img[alt=Photos] {
+    padding: 10%;
+}
+
+aside ol, aside ul {
+    padding: 0;
+    list-style: None;
+}
+
+aside li {
+    border-top: 1px solid white;
+    padding: 8% 0;
+}
+
+aside a {
+    color: white;
+    font-weight: bold;
+}
+
+form[class=photos], form[class=vips] {
+    margin: auto;
+    width: 40vw;
+    text-align: left;
+    padding: 1%;
+}
+form[class=photos] label, form[class=vips] label{
+    display: block;
+    width: 22vw;
+    float: left;
+}
+form[class=photos] input[type=text], form[class=photos] input[type=file], form[class=photos] select, form[class=photos] input[type=date], form[class=photos] textarea {
+    margin: 2% 0;
+    width: 15vw;
+}
+form[class=vips] input[type=text], form[class=vips] input[type=file], form[class=vips] select, form[class=vips] input[type=date], form[class=vips] textarea {
+    margin: 2% 0;
+    width: 15vw;
+}
+select {
+    height: 25px;
+}
+.end_form {
+    display: flex;
+}
+input[type = submit], input[type=reset]{
+    display: block;
+    width: 30%;
+    margin: 2% auto;
+}
+

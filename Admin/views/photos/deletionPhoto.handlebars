@@ -4,28 +4,31 @@
     </div>
     <div class="col-8">
         {{#if choiceVip}}
-            <form action="/deletePhoto" method="post">
-                <h2>Suppression photo</h2>
-                <input type="hidden" name="id" value="{{id}}">
-                {{#each choiceVip}}
-                    <input type="checkbox" id="myCheckbox1" name="picture" value="{{this.PICNUM}}"/>
-                    <label for="myCheckbox1"><img src="/images/vip/{{this.PIC}}"/></label>
-                {{/each}}
-                <input type="submit" name="submit" id="submit" value="Supprimer">
+            <form class="photos" action="/deletePhoto" method="post">
+                <fieldset>
+                    <legend>Suppression d'une photo</legend>
+                    <input type="hidden" name="id" value="{{id}}">
+                    {{#each choiceVip}}
+                        <input type="checkbox" id="myCheckbox1" name="picture" value="{{this.PICNUM}}"/>
+                        <label for="myCheckbox1"><img src="/images/vip/{{this.PIC}}"/></label>
+                    {{/each}}
+                    <input type="submit" name="submit" id="submit" value="Supprimer">
+                </fieldset>
             </form>
         {{else}}
-            <form action="/deleteChoice" method="post">
-                <h2>Suppression Photo</h2>
-                <label for="vip">Choisissez un vip : </label>
-                <select name ="vip" id ="vip">
-                    {{#each vips}}
-                        <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
-                    {{/each}}
-                </select><br>
-                <input type="submit" name="submit" id="submit">
+            <form class="photos" action="/deleteChoice" method="post">
+                <fieldset>
+                    <legend>Suppression d'une photo</legend>
+                    <label for="vip">Choisissez un vip : </label>
+                    <select name ="vip" id ="vip">
+                        {{#each vips}}
+                            <option value="{{this.NUM}}">{{this.FNAME}} {{this.NAME}}</option>
+                        {{/each}}
+                    </select><br>
+                    <input type="submit" name="submit" id="submit">
+                </fieldset>
             </form>
         {{/if}}
-
     </div>
 </section>
 

@@ -1,0 +1,21 @@
+.connexion {
+    margin: auto;
+    width: 20vw;
+    text-align: left;
+}
+
+label {
+    display: block;
+    width: 10vw;
+    float: left;
+    margin: 2% 0;
+}
+input[type = submit]{
+    display: block;
+    width: 30%;
+    margin: 2% auto;
+}
+input[type=text], input[type=password] {
+    margin: 1% 0;
+    width: 10vw;
+}

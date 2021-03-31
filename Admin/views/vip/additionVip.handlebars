@@ -4,33 +4,37 @@
         {{>partialNavigationVip}}
     </div>
     <div class="col-8">
-        <form action="/addVip" method="post">
-            <h2>Ajout VIPs</h2>
-            <label for="name">Nom* : </label><input type="text" name="name" id="name" required size="20" pattern="[A-Za-z].{2,}"><br>
-            <label for="fname">Prénom* : </label><input type="text" name="fname" id="fname" required size="20" pattern="[A-Za-z].{2,}"><br>
+        <form class="vips" action="/addVip" method="post">
+            <fieldset>
+                <legend>Ajout VIPs</legend>
+                <label for="name">Nom* : </label><input type="text" name="name" id="name" required size="20" pattern="[A-Za-z].{2,}"><br>
+                <label for="fname">Prénom* : </label><input type="text" name="fname" id="fname" required size="20" pattern="[A-Za-z].{2,}"><br>
 
-            <label for="sexe">Sexe : </label>
-            <select type="text" name="sex" id="sex">
-                <option value="F">Féminin</option>
-                <option value="M">Masculin</option>
-            </select><br>
+                <label for="sexe">Sexe : </label>
+                <select type="text" name="sex" id="sex">
+                    <option value="F">Féminin</option>
+                    <option value="M">Masculin</option>
+                </select><br>
 
-            <label for="date">Date de naissance : </label><input type="date" name="date" id="date"><br>
+                <label for="date">Date de naissance : </label><input type="date" name="date" id="date"><br>
 
-            <label for="nat">Nationalité : </label>
-            <select name ="nat" id ="nat">
-                {{#each nationalities}}
-                    <option value="{{this.NATNUM}}">{{this.NATNOM}}</option>
-                {{/each}}
-            </select><br>
+                <label for="nat">Nationalité : </label>
+                <select name ="nat" id ="nat">
+                    {{#each nationalities}}
+                        <option value="{{this.NATNUM}}">{{this.NATNOM}}</option>
+                    {{/each}}
+                </select><br>
 
-            <label for="com">Commentaire : </label><textarea name="com" id="com"></textarea><br>
-            <label for="img">Sélectionner l'image</label><input type="file" accept="accept= image/*" name="img" id="img"><br>
-            <label for="subject">Sujet : </label><input type="text" name="subject" id="subject"><br>
-            <label for="com_img">Commentaire : </label><textarea name="com_img" id="com_img"></textarea><br>
+                <label for="com">Commentaire : </label><textarea name="com" id="com"></textarea><br>
+                <label for="img">Sélectionner l'image</label><input type="file" accept="accept= image/*" name="img" id="img"><br>
+                <label for="subject">Sujet : </label><input type="text" name="subject" id="subject"><br>
+                <label for="com_img">Commentaire : </label><textarea name="com_img" id="com_img"></textarea><br>
 
-            <input type="submit" name="submit" id="submit">
-            <input type="reset" name="submit" id="submit" value="Annuler">
+                <div class="end_form">
+                    <input type="reset" name="submit" id="submit" value="Annuler">
+                    <input type="submit" name="submit" id="submit">
+                </div>
+            </fieldset>
         </form>
 
     </div>
