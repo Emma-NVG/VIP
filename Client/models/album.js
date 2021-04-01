@@ -55,7 +55,7 @@ module.exports.getPhotoAndInfo = function(vip_numero,photo_numero,callback) {
 module.exports.getNumberPhotos = function(vip_numero,callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            let sql =   "SELECT v.VIP_NUMERO AS NUM, COUNT(PHOTO_NUMERO)-1 AS MAX FROM vip v "+
+            let sql =   "SELECT v.VIP_NUMERO AS NUM, COUNT(PHOTO_NUMERO) AS MAX FROM vip v "+
                 "JOIN photo p ON p.VIP_NUMERO=v.VIP_NUMERO "+
                 "WHERE v.VIP_NUMERO="+vip_numero+ "";
             connexion.query(sql, callback);

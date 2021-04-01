@@ -109,10 +109,10 @@
 
     <!--Galerie Photo-->
     {{#each galerie}}
-        <a href="/images/vip/{{this.PIC}}"  title="Image {{inc @index}} / {{../numberPhotos/MAX}}"
+        <a href="/images/vip/{{this.PIC}}"  title="Image {{inc @index}} / {{dec ../numberPhotos/MAX}}"
                                             data-toggle="lightbox"
                                             data-title="{{this.SUJET}}"
-                                            data-footer="{{this.COM}} <br> <i>Image {{inc @index}}/{{../numberPhotos/MAX}} </i>">
+                                            data-footer="{{this.COM}} <br> <i>Image {{inc @index}}/{{dec ../numberPhotos/MAX}} </i>">
             <img src="/images/vip/{{this.PIC}}" class="gallery_img">
         </a>
     {{/each}}
