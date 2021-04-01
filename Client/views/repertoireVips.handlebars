@@ -111,12 +111,10 @@
 
     <!--Galerie Photo-->
     {{#each galerie}}
-<!--        <a href="/images/vip/{{this.PIC}}" rel="lytebox" title="Image {{inc @index}} / {{this.TOTAL}}"><img src="/images/vip/{{this.PIC}}" class="gallery_img"></a>-->
-        <a href="/images/vip/{{this.PIC}}"  title="Image {{inc @index}} / {{this.TOTAL}}"
+        <a href="/images/vip/{{this.PIC}}"  title="Image {{inc @index}} / {{../numberPhotos/MAX}}"
                                             data-toggle="lightbox"
                                             data-title="{{this.SUJET}}"
-                                            data-footer="{{this.COM}} <br> <i>Image {{inc @index}}/ </i>">
-            <!--TODO ajouter le nombre d'images totales-->
+                                            data-footer="{{this.COM}} <br> <i>Image {{inc @index}}/{{../numberPhotos/MAX}} </i>">
             <img src="/images/vip/{{this.PIC}}" class="gallery_img">
         </a>
 

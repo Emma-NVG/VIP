@@ -5,42 +5,47 @@ const VipAdminController = require("../controllers/VipAdminController");
 
 module.exports = function (app) {
 
-    //Main Routes
+/* ======= Main Routes  ======= */
     app.get('/', ConnexionController.Accueil);
     app.post('/connexion', ConnexionController.Connexion)
     app.get('/accueil', getConnected, HomeController.Index);
 
-    //Vip
+/* ======= VIP  ======= */
     app.get('/adminVip/:action',getConnected, VipAdminController.Vip);
-    //Vip choice
+
+    /* ======= Vip choice ======= */
     app.post('/vipChoice',getConnected, VipAdminController.VipInfo);
 
-    /* == Add part == */
+    /* ======= Add ======= */
     app.post('/addVip',getConnected, VipAdminController.AddVip);
 
-    /* == Modify part == */
+    /* ======= Modify ======= */
     app.post('/modifyVip',getConnected, VipAdminController.ModifyVip);
 
-    /* == Delete part == */
+    /* ======= Delete ======= */
     app.post('/deleteVip/:id',getConnected, VipAdminController.DeleteVip);
 
-    //Photos
+/* ======= PHOTOS ======= */
     app.get('/adminPhotos/:action',getConnected, PhotoController.adminPhotos);
+
+    /* ======= Add ======= */
     app.post('/addPhoto',getConnected, PhotoController.AddPhoto);
+
+    /* ======= Delete ======= */
     app.post('/deleteChoice',getConnected, PhotoController.InfoPhoto);
     app.post('/deletePhoto',getConnected, PhotoController.DeletePhoto);
 
-    //Deconnexion
-    app.get('/deconnexion', ConnexionController.Deconnexion);
+/* ======= Disconnection ======= */
+app.get('/deconnexion', ConnexionController.Deconnexion);
 
-    //Middleware
-    function getConnected(request, response, next) {
-        if(request.session.login !== undefined) {
-            next();
-        }
-        else {
-            response.redirect("/");
-        }
+//Middleware
+function getConnected(request, response, next) {
+    if(request.session.login !== undefined) {
+        next();
     }
+    else {
+        response.redirect("/");
+    }
+}
 
 }
