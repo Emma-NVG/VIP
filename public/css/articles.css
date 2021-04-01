@@ -1,9 +1,13 @@
 .article {
     border: 1px solid black;
     width: 60%;
-    text-align: left;
     padding: 0 1%;
     float: left;
+    text-align: justify;
+}
+.article img {
+    display: block;
+    margin: auto;
 }
 
 aside {
@@ -18,3 +22,16 @@ aside img {
 aside ol, aside ul {
     padding: 0;
 }
+
+.detail_article {
+    background-color: lightgrey;
+    width: 100%;
+    margin-bottom: 3%;
+}
+.detail_article a {
+    float: right;
+    color: black;
+    text-decoration: underline;
+}
+
+

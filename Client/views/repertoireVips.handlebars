@@ -13,99 +13,97 @@
 <div class="vip_details">
     {{#each vipPerson}}
         <img src="/images/vip/{{../photoProfile.PHOTO}}">
-        <p>Nom : {{this.FIRSTNAME}} {{this.NAME}}</p>
-        <p>Date de naissance : {{formatDate this.DATE 'dddd D MMMM YYYY'}} </p>
-        <p>Nationalité : {{../nationality.NAT}}</p>
+        <p><strong>Nom :</strong> {{this.FIRSTNAME}} {{this.NAME}}</p>
+        <p><strong>Date de naissance :</strong> {{formatDate this.DATE 'dddd D MMMM YYYY'}} </p>
+        <p><strong>Nationalité :</strong> {{../nationality.NAT}}</p>
 
         <!--Acteur-->
         {{#if ../acteur}}
-            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Actrice{{else}}Acteur{{/ifCond}}<br>
-                Principal(aux) film(s) : </p>
+            <p> <strong>Profession :</strong> {{#ifCond this.SEXE '==' "F" }}Actrice{{else}}Acteur{{/ifCond}}<br>
+                <strong>Principal(aux) film(s) :</strong> </p>
             {{#each ../acteur}}
-                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUMRE}}"
+                <p>- {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUMRE}}"
                                                                               data-toggle="preview"
                                                                               title="{{this.REALISATEUR}}"
                                                                               rel="preview vip"
                                                                               data-img="/images/vip/{{this.PHOTO}}"
-                                                                              data-text="{{text this.TXT 100}}">{{this.REALISATEUR}}</a><br>
+                                                                              data-text="{{text this.TXT 100}}">{{this.REALISATEUR}}</a></p>
             {{/each}}
         {{/if}}
 
         <!--Chanteur-->
         {{#if ../chanteur}}
-            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Chanteuse{{else}}Chanteur{{/ifCond}} ({{this.SPE}})<br>
-                Principal(aux) album(s) : </p>
+            <p> <strong>Profession :</strong> {{#ifCond this.SEXE '==' "F" }}Chanteuse{{else}}Chanteur{{/ifCond}} ({{this.SPE}})<br>
+                <strong>Principal(aux) album(s) :</strong> </p>
             {{#each ../chanteur}}
-                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) {{this.MDNOM}}<br>
+                <p>- {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}}) {{this.MDNOM}}</p>
             {{/each}}
         {{/if}}
 
         <!--Couturier-->
         {{#if ../couturier}}
-            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Couturière{{else}}Couturier{{/ifCond}}<br>
-                Principal(aux) défilé(s) : </p>
+            <p> <strong>Profession :</strong> {{#ifCond this.SEXE '==' "F" }}Couturière{{else}}Couturier{{/ifCond}}<br>
+                <strong>Principal(aux) défilé(s) :</strong> </p>
             {{#each ../couturier}}
-                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}})<br>
+                <p>- {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}})</p>
             {{/each}}
         {{/if}}
 
         <!--Mannequin-->
         {{#if ../mannequin}}
-            <p> Profession : Mannequin<br>
-                Principal(aux) défilé(s) : </p>
+            <p> <strong>Profession :</strong> Mannequin<br>
+                <strong>Principal(aux) défilé(s) :</strong> </p>
             {{#each ../mannequin}}
-                - {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUM}}"
+                <p>- {{this.LIEU}} ({{formatDate this.DATE 'MMMM YYYY'}}) de <a href="/person/{{this.NUM}}"
                                                                              data-toggle="preview"
                                                                              title="{{this.COUTURIER}}"
                                                                              rel="preview vip"
                                                                              data-img="/images/vip/{{this.PHOTO}}"
-                                                                             data-text="{{text this.TXT 100}}">{{this.COUTURIER}}</a><br>
+                                                                             data-text="{{text this.TXT 100}}">{{this.COUTURIER}}</a></p>
             {{/each}}
         {{/if}}
 
         <!--Realisateur-->
         {{#if ../realisateur}}
-            <p> Profession : {{#ifCond this.SEXE '==' "F" }}Réalisatrice{{else}}Réalisateur{{/ifCond}}<br>
-                Principal(aux) film(s) : </p>
+            <p> <strong>Profession :</strong> {{#ifCond this.SEXE '==' "F" }}Réalisatrice{{else}}Réalisateur{{/ifCond}}<br>
+                <strong>Principal(aux) film(s) :</strong> </p>
             {{#each ../realisateur}}
-                - {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}})<br>
+                <p>- {{this.TITRE}} ({{formatDate this.DATE 'MMMM YYYY'}})</p>
             {{/each}}
         {{/if}}
 
         <!--Marriages-->
         {{#if ../mariage}}
-        <p>Mariage(s) : </p>
+        <p><strong>Mariage(s) :</strong> </p>
             {{#each ../mariage}}
-                <span> - <a href="/person/{{this.NUM}}"
+                <span><p> - <a href="/person/{{this.NUM}}"
                             data-toggle="preview"
                             title="{{this.NOM}}"
                             rel="preview vip"
                             data-img="/images/vip/{{this.PHOTO}}"
                             data-text="{{text this.TXT 100}}">{{this.NOM}}</a>
-                    ({{formatDate this.DATE 'MMMM YYYY'}}{{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}}{{/if}}) lieu : {{this.LIEU}}
-                </span>
-                <br>
+                    ({{formatDate this.DATE 'MMMM YYYY'}}{{#if this.DATEFIN}} --> {{formatDate this.DATEFIN 'MMMM YYYY'}}{{/if}}) <strong>lieu :</strong> {{this.LIEU}}
+                </p></span>
             {{/each}}
         {{/if}}
 
         <!--Liaisons-->
         {{#if ../liaison}}
-        <p>Liaison(s) : </p>
+        <p><strong>Liaison(s) :</strong> </p>
             {{#each ../liaison}}
-                <span> - <a href="/person/{{this.NUM}}"
+                <span><p> - <a href="/person/{{this.NUM}}"
                             data-toggle="preview"
                             title="{{this.NOM}}"
                             rel="preview vip"
                             data-img="/images/vip/{{this.PHOTO}}"
                             data-text="{{text this.TXT 100}}">{{this.NOM}}</a>
-                    ({{formatDate this.DATE 'MMMM YYYY'}}) raison fin liaison : {{this.MOTIF}}
+                    ({{formatDate this.DATE 'MMMM YYYY'}}) <strong>raison fin liaison :</strong> {{this.MOTIF}}</p>
                 </span>
-                <br>
             {{/each}}
         {{/if}}
 
         <!--Description-->
-        <p>Qui suis-je ? : {{this.TXT}}</p>
+        <p><strong>Qui suis-je ? :</strong> {{this.TXT}}</p>
 
     {{/each}}
 

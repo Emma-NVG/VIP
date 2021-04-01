@@ -86,6 +86,9 @@ a  {
     display: inline-grid;
     margin: 2%;
 }
+.list_photo_name img {
+    height: 150px;
+}
 
 .vip_details {
     padding: 0% 5%;
@@ -97,11 +100,12 @@ a  {
 }
 
 .vip_details p{
-    text-align: left;
+    text-align: justify;
 }
 
 .gallery_img{
     width:13%;
+    height: 150px;
 }
 
 .album-aside{
@@ -119,4 +123,14 @@ a  {
     background-color: transparent;
     padding: 0;
     height: 150px;
+}
+
+.commentaire {
+    border: 1px solid black;
+    width: 50%;
+    margin: 3% auto;
+}
+
+.col-4 img {
+    max-width: inherit;
 }

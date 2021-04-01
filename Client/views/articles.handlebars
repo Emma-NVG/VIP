@@ -1,15 +1,16 @@
 <section class="article">
     {{#each vipArticle}}
-        <p>{{this.FIRSTNAME}} {{this.NAME}} ({{this.TITRE}}) <br><br>
+        <p><u>{{this.FIRSTNAME}} {{this.NAME}} ({{this.TITRE}})</u><br><br>
             {{#each ../vipPhoto}}
                 <img src="/images/vip/{{this.PHOTO}}">
             {{/each}}
             {{this.CONTENU}} <br>
-            [Ajouté le {{formatDate this.DATEPUB 'dddd D MMMM YYYY'}}]
-            <a href="/person/{{this.NUM}}">voir sa fiche</a>
+
+            <div class="detail_article">[Ajouté le {{formatDate this.DATEPUB 'dddd D MMMM YYYY'}}]
+            <a href="/person/{{this.NUM}}">voir sa fiche</a></div>
         </p>
     {{else}}
-        <p class="empty">Choisissez un VIP pour voir les articles le concernant.</p>
+        <p class="empty">Choisissez un VIP avec au moins un article pour voir les articles le concernant.</p>
     {{/each}}
 </section>
 <aside>
