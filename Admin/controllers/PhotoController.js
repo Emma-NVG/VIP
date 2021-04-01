@@ -79,13 +79,10 @@ module.exports.InfoPhoto = function (request, response) {
 module.exports.DeletePhoto = function (request, response) {
     response.title = "Deletion photos";
 
-    //TODO continuer -> faire le delete sur deux tables en asynchrone?
-    console.log(request.body.picture);
     for (const i of request.body.picture){
         async.parallel([
                 function (callback) {
                     request.body.num = i;
-                    console.log("alors"+request.body.num);
                 },
                 function (callback) {
                     model2.infoPhoto(request.body,function (err, result) {callback(null,result)});

@@ -40,7 +40,7 @@ module.exports.getAllPictures = function(offset,op,callback) {
                 "JOIN photo p ON p.VIP_NUMERO=v.VIP_NUMERO "+
                 "WHERE PHOTO_NUMERO=1 "+end+
                 " LIMIT "+offset+",9";
-            connexion.query(sql, callback); console.log(sql);
+            connexion.query(sql, callback);
             connexion.release();
         }
     });

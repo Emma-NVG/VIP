@@ -25,7 +25,6 @@ module.exports.Connexion = function (request, response) {
         response.connected = result[0];
         if (result[0][0] !== undefined) {
             if (request.body.password === cryptr.decrypt(result[0][0]['PASSWD'])) {
-                console.log("coucou");
                 request.session.login = request.body.login;
                 response.redirect('/accueil');
             }

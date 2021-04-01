@@ -4,7 +4,7 @@ let model = require("../models/articles.js")
 
 module.exports.ChoixVIP = (request, response) => {
     response.title = "";
-    async.parallel([ //TODO remove async
+    async.parallel([
             (callback) => {
                 model.getVIPs((err, result) => {
                     callback(null, result)
@@ -46,7 +46,6 @@ module.exports.DisplayArticle = (request, response) => {
                 console.log(err);
                 return;
             }
-            console.log(result[1]);
             response.listOfPerson = result[0];
             response.vipArticle = result[1];
             response.vipPhoto = result[2];

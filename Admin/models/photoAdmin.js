@@ -26,9 +26,8 @@ module.exports.nbPhoto = function(data, callback) {
 module.exports.deletePhoto = function(data, callback) {
     db.getConnection(function(err, connexion) {
         if (!err) {
-            console.log("numero" + data.num);
             let sql = "DELETE FROM `photo` WHERE `photo`.`PHOTO_NUMERO`="+data.num+" AND `photo`.`VIP_NUMERO`="+ data.id +"";
-            connexion.query(sql, callback); console.log(sql);
+            connexion.query(sql, callback);
             connexion.release();
         }
     });

@@ -21,7 +21,7 @@ module.exports.insertVip = function(data, callback) {
             let date_insertion = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+' '+d.getHours()+':'+d.getMinutes()+':'+d.getSeconds();
 
             let sql = "INSERT INTO vip (NATIONALITE_NUMERO, VIP_NOM, VIP_PRENOM, VIP_SEXE, VIP_NAISSANCE, VIP_TEXTE, VIP_DATE_INSERTION) VALUES ("+ data.nat+", '"+data.name.toUpperCase()+ "', '"+data.fname+"', '"+data.sex+"', '"+data.date+"', '"+data.com+"', '"+date_insertion+"')";
-            connexion.query(sql, callback);console.log(sql);
+            connexion.query(sql, callback);
             connexion.release();
         }
     });
@@ -76,7 +76,6 @@ module.exports.modifyVip = function(data, callback) {
                 "VIP_NAISSANCE = '"+ data.date +"', " +
                 "VIP_TEXTE = '"+ data.com +"' " +
                 "WHERE VIP_NUMERO = "+data.id+"";
-            console.log(sql);
             connexion.query(sql, callback);
             connexion.release();
         }
