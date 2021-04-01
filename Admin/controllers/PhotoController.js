@@ -5,20 +5,15 @@ let model2 = require("../models/photoAdmin.js");
 module.exports.adminPhotos = function (request, response) {
     response.title = "Administration photos";
     let action = request.params.action;
-    async.parallel([
-            function (callback) {
-                model.getAllVips(function (err, result) {callback(null,result)});
-            }
-        ],
-        function (err,result){
-            if(err){
+    model.getAllVips(function (err, result) {
+            if (err) {
                 console.log(err);
                 return;
             }
-            response.vips = result[0];
-            if (action=="A"){
+            response.vips = result;
+            if (action == "A") {
                 response.render('photos/additionPhoto', response);
-            }else{
+            } else {
                 response.render('photos/deletionPhoto', response);
             }
 
@@ -30,24 +25,24 @@ module.exports.AddPhoto = function (request, response) {
     response.title = "Administration photos";
     async.parallel([
             function (callback) {
-                model2.nbPhoto(request.body,function (err, result) {
-                    if(err){
+                model2.nbPhoto(request.body, function (err, result) {
+                    if (err) {
                         console.log(err);
                         return;
                     }
-                    model2.insertPhoto(result[0],request.body,function (err1, result1) {
-                        if(err){
+                    model2.insertPhoto(result[0], request.body, function (err1, result1) {
+                        if (err) {
                             console.log(err);
                             return;
                         }
                     });
-                    callback(null,result)
+                    callback(null, result)
                 });
 
             },
         ],
-        function (err,result){
-            if(err){
+        function (err, result) {
+            if (err) {
                 console.log(err);
                 return;
             }
@@ -58,13 +53,8 @@ module.exports.AddPhoto = function (request, response) {
 
 module.exports.InfoPhoto = function (request, response) {
     response.title = "Deletion photos";
-    async.parallel([
-            function (callback) {
-                model2.infoPhoto(request.body,function (err, result) {callback(null,result)});
-            }
-        ],
-        function (err,result){
-            if(err){
+    model2.infoPhoto(request.body, function (err, result) {
+            if (err) {
                 console.log(err);
                 return;
             }
@@ -85,11 +75,13 @@ module.exports.DeletePhoto = function (request, response) {
                     request.body.num = i;
                 },
                 function (callback) {
-                    model2.infoPhoto(request.body,function (err, result) {callback(null,result)});
+                    model2.infoPhoto(request.body, function (err, result) {
+                        callback(null, result)
+                    });
                 }
             ],
-            function (err,result){
-                if(err){
+            function (err, result) {
+                if (err) {
                     console.log(err);
                     return;
                 }
