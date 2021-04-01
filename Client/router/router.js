@@ -18,6 +18,10 @@ module.exports = function(app){
     /* ======= Albums ======= */
     app.get('/album', AlbumController.ListerAlbum);
     app.get('/photoDetail/:detail/:number', AlbumController.ListerAlbum);
+    // app.get('/start/:indice', AlbumController.Start);
+    // app.get('/next/:indice', AlbumController.Next);
+    // app.get('/previous/:indice', AlbumController.Previous);
+    // app.get('/end/:indice', AlbumController.End);
 
     /* ====== Articles ======= */
     app.get('/articles', ArticlesController.ChoixVIP)

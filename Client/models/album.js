@@ -17,6 +17,23 @@ module.exports.getAllPictures = function(callback) {
 };
 
 /**
+ *  @function Get all addresses of the first picture of all vips
+ *
+ * */
+module.exports.getAllPictures = function(callback) {
+    db.getConnection(offset,function(err, connexion) {
+        if (!err) {
+            let sql =   "SELECT v.VIP_NUMERO AS NUM, PHOTO_ADRESSE AS PIC FROM vip v "+
+                "JOIN photo p ON p.VIP_NUMERO=v.VIP_NUMERO "+
+                "WHERE PHOTO_NUMERO=1 "+
+                "LIMIT 0, "+ offset+"";
+            connexion.query(sql, callback); console.log(sql);
+            connexion.release();
+        }
+    });
+};
+
+/**
  *  @function Get all informations of a picture from a vip id and a photo id
  *
  *  @param vip_numero int : id of the vip

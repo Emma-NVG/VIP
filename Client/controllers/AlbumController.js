@@ -9,7 +9,7 @@ module.exports.ListerAlbum = 	function(request, response){
     let photo_numero = request.params.number;
     async.parallel([
             function (callback) {
-                model.getAllPictures(function(err, result) {callback(null,result)}); //Get all pictures of vips
+                model.getAllPictures(offset,function(err, result) {callback(null,result)}); //Get all pictures of vips
             }
             ,
             function (callback) {
