@@ -10,8 +10,10 @@
                 {{#ifCond this.PICNUM '==' ../max.MAX}}<div class="col-4 invisible">{{else}}<div class="col-4">{{/ifCond}}<a href="/photoDetail/{{this.NUM}}/{{inc this.PICNUM}}"><span>>></span></a></div>
             </div>
             <div class="row">
-                <h4>Commentaire</h4>
-                <p>{{this.COM}}</p>
+                <fieldset class="commentaire">
+                    <legend>Commentaire</legend>
+                    <p>{{this.COM}}</p>
+                </fieldset>
             </div>
         {{/each}}
     </div>
