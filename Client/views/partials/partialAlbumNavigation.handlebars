@@ -5,9 +5,13 @@
         </div>
     {{/each}}
 </div>
+{{#if of}}
 <div class="row">
-    <a href="/Start/:indice"><div><span><< Début</span></div></a>
-    <a href="/Previous/:indice"><div><span>< Précédent</span></div></a>
-    <a href="/Next/:indice"><div><span>Suivant ></span></div></a>
-    <a href="/End/:indice"><div><span>Fin >></span></div></a>
+    <a href="/album/9/null"><div><span><< Début</span></div></a>
+    <a href="/album/{{of/OF}}/-"><div><span>< Précédent</span></div></a>
+    <a href="/album/{{of/OF}}/+"><div><span>Suivant ></span></div></a>
+    <a href="/album/9/end"><div><span>Fin >></span></div></a>
 </div>
+{{/if}}
+
+

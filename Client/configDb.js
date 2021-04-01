@@ -11,9 +11,9 @@ let mysql = require('mysql');
 let pool  = mysql.createPool({
   host     : 'localhost',
   user     : 'root',
-  //password :'root',
+  password :'root',
   database : 'vip',
-  port : "3306"
+  port : "3307"
 });
 
 module.exports.getConnection = function(callback) {

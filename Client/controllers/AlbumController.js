@@ -7,9 +7,16 @@ module.exports.ListerAlbum = 	function(request, response){
    response.title = 'Album des stars';
     let vip_numero = request.params.detail;
     let photo_numero = request.params.number;
+    let offset ;
+    let op = request.params.op;
+    if (request.params.indice == null){
+        offset=0;
+    }else{
+        offset = request.params.indice;
+    }
     async.parallel([
             function (callback) {
-                model.getAllPictures(offset,function(err, result) {callback(null,result)}); //Get all pictures of vips
+                model.getAllPictures(offset,op,function(err, result) {callback(null,result)}); //Get all pictures of vips
             }
             ,
             function (callback) {
@@ -26,6 +33,7 @@ module.exports.ListerAlbum = 	function(request, response){
             }
             response.galerie = result[0];
             response.albumInfo = result[1];
+            response.of = result[0][0];
 
             //if no vip has been selected in the album
             if (response.albumInfo != null){
@@ -35,3 +43,4 @@ module.exports.ListerAlbum = 	function(request, response){
         }
     );
 } ;
+
