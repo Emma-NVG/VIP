@@ -97,7 +97,7 @@ module.exports.ModifyVip = function (request, response) {
     response.title = "Modification of vip in database";
     async.parallel([
             function (callback) {
-                model.modifyVip(request.body,function (err, result) {callback(null,result)}); //TODO remove async
+                model.modifyVip(request.body,function (err, result) {callback(null,result)});
             }
         ],
         function (err,result){
